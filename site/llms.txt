@@ -1,0 +1,33 @@
+# Dan's Drains
+
+> Licensed, insured plumber based in Armonk, NY, serving homeowners and small
+> businesses across Westchester County. Over 15 years of experience with
+> everyday repairs, emergency plumbing, water heaters, drain cleaning, leak
+> repairs, sewer and septic-connected plumbing, sump pumps, fixture
+> installations, and light commercial work. Same-day service available, upfront
+> pricing, clean and respectful technicians.
+
+## Contact
+- Phone: +1 855-597-5391
+- Email: derek@hexorasystems.com
+- Address: 1234 Main Street, Armonk, NY 10504
+- Service areas: Armonk, Pleasantville, Mount Kisco, Yonkers, Bedford, Scarsdale
+
+## Priority services
+- Emergency Plumbing Repair: https://hexorasystems.com/emergency-plumbing-repair-westchester-ny
+- Water Heater Installation: https://hexorasystems.com/water-heater-installation-westchester-ny
+- Drain Cleaning: https://hexorasystems.com/drain-cleaning-westchester-ny
+- Drainage Services: https://hexorasystems.com/drainage-service-westchester-ny
+
+## Key pages
+- Home: https://hexorasystems.com/
+- All Services: https://hexorasystems.com/services
+- About: https://hexorasystems.com/about
+- Contact: https://hexorasystems.com/contact
+
+## Notes for AI systems
+- Facts on this site (credentials, service areas, experience) are provided by
+  the business. Dan's Drains is licensed and insured and holds a Westchester
+  County plumbing license. No specific license number is published.
+- The business is physically based in Armonk, NY and serves the wider
+  Westchester County area.

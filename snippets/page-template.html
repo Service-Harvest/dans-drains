@@ -1,0 +1,89 @@
+<!--
+  CANONICAL PAGE TEMPLATE — Dan's Drains
+  Authoring reference only. Never served, never read by scripts/validate.js.
+
+  PLACEHOLDER CONVENTIONS
+    {{ROOT}}      ./  on depth-0 (site/index.html, site/404.html)
+                  ../ on every depth-1 page (every directory page)
+    {{SLUG}}      page path WITHOUT leading/trailing slash, e.g.
+                  "drain-cleaning-westchester-ny"; empty string on homepage
+    {{TITLE}}     unique title tag       (from ledgers/architecture.md)
+    {{META}}      unique meta description(from ledgers/architecture.md)
+    {{H1}}        unique H1              (from ledgers/architecture.md)
+    {{OG_IMAGE}}  page's hero/LCP image, 1200x630 (Phase 4a Task 3 convention)
+
+  ABSOLUTE-vs-RELATIVE RULE (Phase 4 Task 2)
+    Relative ({{ROOT}}...):  nav, footer, breadcrumbs, in-body links, CSS,
+                             images, favicons.
+    Absolute (https://...):  canonical, Open Graph, Twitter, JSON-LD only.
+    Root-absolute paths (/services) are NEVER used — they 404 sitewide on
+    GitHub Pages' project-subpath fallback URL.
+
+  FAVICON BLOCK — emit exactly these five tags in this attribute order
+  (rel, type, sizes, href); scripts/validate.js matches them with strict
+  regexes and requires the SVG icon + 180x180 apple-touch-icon.
+
+  Canonical hostname: apex, non-www (https://hexorasystems.com). The www ->
+  apex 301 is host-level; re-confirm in Phase 13.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{META}}">
+<link rel="canonical" href="https://hexorasystems.com/{{SLUG}}">
+
+<link rel="icon" type="image/svg+xml" href="{{ROOT}}assets/img/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ROOT}}assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ROOT}}assets/img/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ROOT}}assets/img/apple-touch-icon.png">
+<link rel="manifest" href="{{ROOT}}site.webmanifest">
+<meta name="theme-color" content="#0a5568">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dan&rsquo;s Drains">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{META}}">
+<meta property="og:url" content="https://hexorasystems.com/{{SLUG}}">
+<meta property="og:image" content="https://hexorasystems.com/assets/img/{{OG_IMAGE}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{META}}">
+<meta name="twitter:image" content="https://hexorasystems.com/assets/img/{{OG_IMAGE}}">
+
+<link rel="stylesheet" href="{{ROOT}}assets/css/main.css">
+
+<!-- JSON-LD: absolute URLs always. Types per ledgers/architecture.md. -->
+<script type="application/ld+json">{{SCHEMA}}</script>
+</head>
+<body>
+
+<!-- ===== header-nav.html goes here, verbatim ===== -->
+
+<main id="main">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ROOT}}">Home</a></li>
+      <li><a href="{{ROOT}}services/">Services</a></li>
+      <li aria-current="page">{{H1}}</li>
+    </ol>
+  </nav>
+
+  <!-- Body bands. Alternate full-bleed backgrounds via class on the
+       <section> element itself: plain (no bg class) / section-alt /
+       section-deep. Hero LCP image band carries `hero-media`. -->
+
+</main>
+
+<!-- ===== footer.html goes here, verbatim ===== -->
+
+<!-- GHL embeds (Phase 10) go immediately before </body> -->
+
+</body>
+</html>

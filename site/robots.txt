@@ -1,0 +1,31 @@
+# robots.txt — hexorasystems.com (Dan's Drains)
+
+User-agent: *
+Allow: /
+
+# ---------------------------------------------------------------
+# AI crawler policy — DELIBERATE DECISION, not a default.
+#
+# Phase 2 research found that AI answers for this market (Westchester
+# County plumbing) are aggregator-driven and that AI Overviews are
+# present on the target-geography SERP. Earning citations in
+# AI-generated answers is a core organic channel for this business, so
+# the AI crawlers are explicitly ALLOWED to read the site. Blocking
+# them would forfeit that channel for no benefit.
+#
+# Revisit only if the client's position on AI training use changes.
+# ---------------------------------------------------------------
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://hexorasystems.com/sitemap.xml
