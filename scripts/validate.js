@@ -30,6 +30,7 @@ const path = require("path");
 const SITE_DIR = path.join(__dirname, "..", "site");
 const ANCHOR_LEDGER = path.join(__dirname, "..", "ledgers", "anchor-ledger.md");
 const PHASE_06 = path.join(__dirname, "..", "pipeline", "phase-06-content-drafting.md");
+const ARCHITECTURE = path.join(__dirname, "..", "ledgers", "architecture.md");
 const CNAME_FILE = path.join(SITE_DIR, "CNAME");
 const SITEMAP_FILE = path.join(SITE_DIR, "sitemap.xml");
 
@@ -223,6 +224,46 @@ function hrefMatchesApprovedDomain(href, approvedDomains) {
   return false;
 }
 
+// Decode the small set of HTML entities the templates emit, strip tags, and
+// normalize whitespace — so a canonical-name substring check compares against
+// human-readable text, not markup.
+function decodeText(s) {
+  return String(s)
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&rsquo;|&lsquo;|&#8217;|&#39;/g, "'")
+    .replace(/&mdash;|&ndash;|&#8212;|&#8211;/g, "—")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// Parse the "Canonical ... names" table in ledgers/architecture.md into a
+// { slug -> canonical name } map. This is the single source of truth for the
+// approved category/service names (see phase-03-architecture-checkpoint.md).
+// Returns null if the file or the table is absent.
+function loadCanonicalNames() {
+  if (!fs.existsSync(ARCHITECTURE)) return null;
+  const text = readFile(ARCHITECTURE);
+  const secMatch = text.match(/##[^\n]*[Cc]anonical[^\n]*\n([\s\S]*?)(?:\n## |\s*$)/);
+  if (!secMatch) return null;
+  // Two-column table (| slug | canonical name |) — parse directly rather than
+  // via parseMarkdownTable(), which requires >=3 cells.
+  const map = {};
+  for (const rawLine of secMatch[1].split("\n")) {
+    const line = rawLine.trim();
+    if (!line.startsWith("|")) continue;
+    if (/^\|[\s:-]+\|/.test(line)) continue; // separator row
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim().replace(/^`(.*)`$/, "$1"));
+    if (cells.length < 2) continue;
+    const slug = cells[0];
+    const name = cells[1];
+    if (!slug || slug.toLowerCase() === "slug") continue;
+    if (name) map[slug] = decodeText(name);
+  }
+  return Object.keys(map).length ? map : null;
+}
+
 function loadSitemapUrls() {
   if (!fs.existsSync(SITEMAP_FILE)) return null;
   const text = readFile(SITEMAP_FILE);
@@ -253,6 +294,9 @@ const faqSectionByUrl = new Map(); // url -> boolean
 const bodyAnchorsByUrl = new Map(); // url -> [{href, text}] — body copy only
 const outboundAnchorsByUrl = new Map(); // url -> [{href, text}] — external links, any location
 const canonicalByUrl = new Map(); // url -> raw canonical href string, for the sitemap cross-check below
+const h1TextByUrl = new Map(); // url -> decoded H1 text (for canonical-name check)
+const titleTextByUrl = new Map(); // url -> decoded title text (for canonical-name check)
+const breadcrumbLabelByUrl = new Map(); // url -> decoded breadcrumb current-page label
 
 for (const file of files) {
   const html = readFile(file);
@@ -342,6 +386,13 @@ for (const file of files) {
   const h1s = extractAll(html, "<h1[^>]*>");
   if (h1s.length === 0) fail(`No H1 found: ${url}`);
   if (h1s.length > 1) fail(`Multiple H1s (${h1s.length}) found: ${url}`);
+
+  // --- Capture H1 text, title text, and breadcrumb label (canonical-name check) ---
+  const h1Inner = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  h1TextByUrl.set(url, h1Inner ? decodeText(h1Inner[1]) : "");
+  titleTextByUrl.set(url, title ? decodeText(title) : "");
+  const bcInner = html.match(/<li[^>]*\baria-current=["']page["'][^>]*>([\s\S]*?)<\/li>/i);
+  breadcrumbLabelByUrl.set(url, bcInner ? decodeText(bcInner[1]) : "");
 
   // --- Images: alt text + width/height ---
   const imgTags = extractAll(html, "<img[^>]*>");
@@ -578,6 +629,43 @@ if (approvedDomains === null) {
     const hasApproved = outbound.some((a) => hrefMatchesApprovedDomain(a.href, approvedDomains));
     if (!hasApproved) {
       fail(`No outbound link to an approved authority domain found on ${url} (see phase-06-content-drafting.md's approved list)`);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Canonical name consistency — every category/service page's H1, title, and
+// breadcrumb must carry the EXACT approved name from architecture.md's
+// "Canonical names" table, unaltered and contiguous. Marketing copy may wrap
+// around it (adjectives before, geo/qualifiers after), but the name itself is
+// never reworded/pluralized/expanded, and the breadcrumb label is the name
+// verbatim. This is the automated backstop for the site-wide naming that goes
+// into the client's real GBP. (See phase-03/phase-06.)
+// ---------------------------------------------------------------------
+const canonicalNames = loadCanonicalNames();
+if (canonicalNames === null) {
+  warn(`No "Canonical names" table found in ${ARCHITECTURE} — skipping category/service name-consistency check.`);
+} else {
+  for (const url of allUrls) {
+    const norm = normalizeUrl(url);
+    if (LINKING_EXEMPT_PAGES.has(norm)) continue; // core nav pages + 404
+    const slug = norm.replace(/^\//, "");
+    const canonical = canonicalNames[slug];
+    if (!canonical) {
+      fail(`Canonical name check: category/service page ${url} has no entry in architecture.md's "Canonical names" table — every such page must be listed there.`);
+      continue;
+    }
+    const h1 = h1TextByUrl.get(url) || "";
+    const title = titleTextByUrl.get(url) || "";
+    const bc = breadcrumbLabelByUrl.get(url) || "";
+    if (!h1.includes(canonical)) {
+      fail(`Canonical name mismatch on ${url}: H1 "${h1}" must contain the approved name "${canonical}" as an unaltered, contiguous substring.`);
+    }
+    if (!title.includes(canonical)) {
+      fail(`Canonical name mismatch on ${url}: title tag "${title}" must contain the approved name "${canonical}" as an unaltered, contiguous substring.`);
+    }
+    if (bc !== canonical) {
+      fail(`Canonical name mismatch on ${url}: breadcrumb label "${bc}" must be exactly the approved name "${canonical}".`);
     }
   }
 }

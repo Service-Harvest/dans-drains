@@ -13,12 +13,16 @@
 // ---------- master registry (drives hub coverage + sitemap + breadcrumbs) ----------
 // cat: category slug this service sits under, or "plumber" for the primary
 // bucket (no category page — parent is the services hub).
+// name = the exact canonical name approved at the Phase 3 checkpoint (see the
+// "Canonical category/service names" table in ledgers/architecture.md). This
+// name is the single source of truth and appears, unaltered, in the page's H1,
+// title, breadcrumb, hub heading, and footer label.
 const CATS = [
-  { slug: "drainage-service-westchester-ny", name: "Drainage Services", short: "Drainage", tier: 1 },
-  { slug: "septic-system-service-westchester-ny", name: "Septic System Services", short: "Septic", tier: 2 },
-  { slug: "gasfitter-westchester-ny", name: "Gas Line Services", short: "Gas", tier: 2 },
-  { slug: "bathroom-remodeler-westchester-ny", name: "Bathroom Plumbing", short: "Bathroom", tier: 2 },
-  { slug: "water-damage-restoration-westchester-ny", name: "Water Damage Restoration", short: "Water Damage", tier: 2 },
+  { slug: "drainage-service-westchester-ny", name: "Drainage Service", short: "Drainage", tier: 1 },
+  { slug: "septic-system-service-westchester-ny", name: "Septic System Service", short: "Septic", tier: 2 },
+  { slug: "gasfitter-westchester-ny", name: "Gasfitter", short: "Gas", tier: 2 },
+  { slug: "bathroom-remodeler-westchester-ny", name: "Bathroom Remodeler", short: "Bathroom", tier: 2 },
+  { slug: "water-damage-restoration-westchester-ny", name: "Water Damage Restoration Service", short: "Water Damage", tier: 2 },
 ];
 
 // Short catalog used ONLY for hub cards + sitemap. Full authored pages are in
@@ -92,7 +96,13 @@ function sitemapOrder() {
   return order;
 }
 
-module.exports = { CATS, CATALOG, catName, sitemapOrder };
+// Canonical name lookup by slug (categories + services). Single source of
+// truth mirrored from ledgers/architecture.md's "Canonical names" table.
+const CANONICAL = {};
+CATS.forEach((c) => (CANONICAL[c.slug] = c.name));
+CATALOG.forEach((s) => (CANONICAL[s.slug] = s.name));
+
+module.exports = { CATS, CATALOG, catName, sitemapOrder, CANONICAL };
 
 // customPages + servicePages are attached at the bottom, after the page data
 // blocks are defined (see content-pages.js appended sections).

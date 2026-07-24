@@ -52,19 +52,19 @@
 | /services | /rainwater-tank-installation-westchester-ny | Rainwater Tank Installation | in-body contextual link |
 | /services | /urinal-installation-westchester-ny | Urinal Installation | in-body contextual link |
 | /services | /commercial-plumbing-services-westchester-ny | Commercial Plumbing Services | in-body contextual link |
-| /services | /drainage-service-westchester-ny | everything under our drainage and sewer work | in-body contextual link |
+| /services | /drainage-service-westchester-ny | Drainage Service | in-body contextual link |
 | /services | /drain-cleaning-westchester-ny | Drain Cleaning | in-body contextual link |
 | /services | /hydro-jetting-westchester-ny | Hydro Jetting | in-body contextual link |
 | /services | /drain-snaking-westchester-ny | Drain Snaking | in-body contextual link |
 | /services | /sewer-camera-inspection-westchester-ny | Sewer Camera Inspection | in-body contextual link |
 | /services | /grease-trap-cleaning-westchester-ny | Grease Trap Cleaning | in-body contextual link |
-| /services | /septic-system-service-westchester-ny | the plumbing side of septic care | in-body contextual link |
+| /services | /septic-system-service-westchester-ny | Septic System Service | in-body contextual link |
 | /services | /septic-tank-service-westchester-ny | Septic Tank Service | in-body contextual link |
-| /services | /gasfitter-westchester-ny | our gas line services and safety approach | in-body contextual link |
+| /services | /gasfitter-westchester-ny | Gasfitter | in-body contextual link |
 | /services | /gas-line-repair-westchester-ny | Gas Line Repair | in-body contextual link |
-| /services | /bathroom-remodeler-westchester-ny | how we handle bathroom plumbing | in-body contextual link |
+| /services | /bathroom-remodeler-westchester-ny | Bathroom Remodeler | in-body contextual link |
 | /services | /bathroom-plumbing-remodeling-westchester-ny | Bathroom Plumbing Remodeling | in-body contextual link |
-| /services | /water-damage-restoration-westchester-ny | our water damage prevention help | in-body contextual link |
+| /services | /water-damage-restoration-westchester-ny | Water Damage Restoration Service | in-body contextual link |
 | /services | /water-leak-sensor-installation-westchester-ny | Water Leak Sensor Installation | in-body contextual link |
 | /about | /services | see the full list of plumbing services we offer | in-body contextual link |
 | /contact | /services | browse the plumbing services we provide | in-body contextual link |

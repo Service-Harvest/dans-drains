@@ -47,6 +47,73 @@
 - **Nav bar (exactly):** Home · Services · About · Contact. No dropdowns, no service links in nav. One header CTA button: **Call Dan's Drains Today** → tel:+18555975391.
 - **Footer:** main nav; the 5 priority pages; all 5 secondary category pages; NAP (Armonk address, phone, email); service-area list; social (Facebook). Footer links use plain functional labels — they are navigation, NOT anchor-text strategy (that lives in body copy per the anchor ledger).
 
+## Canonical category/service names — SOURCE OF TRUTH (approved at the Phase 3 checkpoint)
+
+> These are the exact category and service names the client approved at the
+> Phase 3 checkpoint and that go, unaltered, into the client's real Google
+> Business Profile. Each name below is the single source of truth for that
+> page. It MUST appear as an **unaltered, contiguous, exact-match substring**
+> in that page's H1 and title tag, and it MUST be the page's breadcrumb label
+> verbatim. Marketing language may wrap *around* the name (adjectives before,
+> geo/qualifiers after) — but the name itself is never reworded, pluralized,
+> abbreviated, expanded, or substituted. `scripts/validate.js` parses this
+> table and hard-fails any page where the canonical name is not present intact.
+
+| Slug | Canonical Name |
+|---|---|
+| drainage-service-westchester-ny | Drainage Service |
+| septic-system-service-westchester-ny | Septic System Service |
+| gasfitter-westchester-ny | Gasfitter |
+| bathroom-remodeler-westchester-ny | Bathroom Remodeler |
+| water-damage-restoration-westchester-ny | Water Damage Restoration Service |
+| emergency-plumbing-repair-westchester-ny | Emergency Plumbing Repair |
+| water-heater-installation-westchester-ny | Water Heater Installation |
+| tankless-water-heater-installation-westchester-ny | Tankless Water Heater Installation |
+| gas-water-heater-installation-westchester-ny | Gas Water Heater Installation |
+| hot-water-system-repair-westchester-ny | Hot Water System Repair |
+| boiler-installation-westchester-ny | Boiler Installation |
+| toilet-repair-westchester-ny | Toilet Repair |
+| toilet-installation-westchester-ny | Toilet Installation |
+| leak-detection-westchester-ny | Leak Detection |
+| pipe-repair-westchester-ny | Pipe Repair |
+| pipe-replacement-westchester-ny | Pipe Replacement |
+| burst-pipe-repair-westchester-ny | Burst Pipe Repair |
+| frozen-pipe-repair-westchester-ny | Frozen Pipe Repair |
+| repiping-westchester-ny | Repiping |
+| water-line-replacement-westchester-ny | Water Line Replacement |
+| water-main-repair-westchester-ny | Water Main Repair |
+| slab-leak-repair-westchester-ny | Slab Leak Repair |
+| faucet-installation-westchester-ny | Faucet Installation |
+| outdoor-faucet-repair-westchester-ny | Outdoor Faucet Repair |
+| sewer-line-repair-westchester-ny | Sewer Line Repair |
+| garbage-disposal-repair-westchester-ny | Garbage Disposal Repair |
+| shower-installation-westchester-ny | Shower Installation |
+| shower-valve-replacement-westchester-ny | Shower Valve Replacement |
+| bathtub-installation-westchester-ny | Bathtub Installation |
+| sink-installation-westchester-ny | Sink Installation |
+| urinal-installation-westchester-ny | Urinal Installation |
+| fixture-replacement-westchester-ny | Fixture Replacement |
+| sump-pump-installation-westchester-ny | Sump Pump Installation |
+| water-softener-installation-westchester-ny | Water Softener Installation |
+| water-filtration-system-installation-westchester-ny | Water Filtration System Installation |
+| low-water-pressure-repair-westchester-ny | Low Water Pressure Repair |
+| plumbing-inspection-westchester-ny | Plumbing Inspection |
+| appliance-hook-up-westchester-ny | Appliance Hook-up |
+| laundry-room-plumbing-westchester-ny | Laundry Room Plumbing |
+| kitchen-plumbing-remodeling-westchester-ny | Kitchen Plumbing Remodeling |
+| rainwater-tank-installation-westchester-ny | Rainwater Tank Installation |
+| plumbing-maintenance-westchester-ny | Plumbing Maintenance |
+| commercial-plumbing-services-westchester-ny | Commercial Plumbing Services |
+| drain-cleaning-westchester-ny | Drain Cleaning |
+| hydro-jetting-westchester-ny | Hydro Jetting |
+| drain-snaking-westchester-ny | Drain Snaking |
+| sewer-camera-inspection-westchester-ny | Sewer Camera Inspection |
+| grease-trap-cleaning-westchester-ny | Grease Trap Cleaning |
+| septic-tank-service-westchester-ny | Septic Tank Service |
+| gas-line-repair-westchester-ny | Gas Line Repair |
+| bathroom-plumbing-remodeling-westchester-ny | Bathroom Plumbing Remodeling |
+| water-leak-sensor-installation-westchester-ny | Water Leak Sensor Installation |
+
 ## Page inventory
 
 Legend — Tier: **1** = priority/premium · **2** = standard · **3** = thin-but-complete (exists to mirror the GBP). Schema: LB = LocalBusiness/Plumber (sitewide), Svc = Service, BC = BreadcrumbList, FAQ = FAQPage (where FAQs present), WP = WebPage.

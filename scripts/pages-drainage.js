@@ -131,8 +131,8 @@ module.exports = (ctx) => {
 
   P({
     slug: "septic-tank-service-westchester-ny", cat: "septic-system-service-westchester-ny", tier: 3, serviceType: "Septic Tank Service",
-    title: "Septic Tank Plumbing Service in Westchester County, NY",
-    h1: "Septic Tank Plumbing Service in Westchester County, NY",
+    title: "Septic Tank Service in Westchester County, NY | Dan's Drains",
+    h1: "Septic Tank Service for Westchester County, NY Homes",
     heroAlt: "Dan's Drains plumber inspecting septic-connected plumbing at a Westchester County home",
     lead: "For homes on septic, the plumbing that feeds the tank needs care too. Dan's Drains handles the plumbing side of septic systems — clogs, leaks, and the lines that connect your home to the tank.",
     localDetails: "septic-connected drains, drain-field protection, rural properties",

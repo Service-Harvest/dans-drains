@@ -143,7 +143,7 @@ module.exports = (ctx) => {
       cat: "plumber",
       tier: 2,
       serviceType: "Water Heater Repair",
-      title: "Hot Water System &amp; Water Heater Repair in Westchester",
+      title: "Hot Water System Repair in Westchester County, NY | Dan's",
       h1: "Hot Water System Repair in Westchester County, NY",
       heroAlt: "Dan's Drains plumber diagnosing a water heater that is not producing hot water",
       lead: "No hot water, or not enough? Dan's Drains diagnoses and repairs water heaters fast, and gives you an honest call on whether a repair makes sense or a replacement is the smarter move.",

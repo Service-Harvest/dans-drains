@@ -8,10 +8,11 @@ item) and content/SEO compliance, and blocks deploy on any failure. This is
 the same script for every client — it reads the current client's `/site/`,
 `/ledgers/anchor-ledger.md`, and `phase-06-content-drafting.md` (for the
 approved outbound-domain list) to know what "correct" looks like for this
-specific build. It does not read `/ledgers/architecture.md` directly — the
-required per-page structure it needs (which links must exist, which pages
-need an outbound link) is already fully captured in the anchor ledger and
-the sitemap by the time this runs.
+specific build. It reads `/ledgers/architecture.md` for one thing only — the
+**"Canonical category/service names" table** (the source-of-truth name check
+below); the rest of the per-page structure it needs (which links must exist,
+which pages need an outbound link) is already fully captured in the anchor
+ledger and the sitemap by the time this runs.
 
 ## Technical / Layer 1 checks (hard fail if any are true)
 - Broken internal links anywhere on the site
@@ -63,6 +64,15 @@ the sitemap by the time this runs.
   main H2 sections (excluding the table-of-contents heading and the FAQ
   section's own heading), or without 5–6 visible FAQs — per Phase 6's
   required page structure and FAQ cap
+- **Canonical name consistency**: for every category/service page, the exact
+  approved name from `architecture.md`'s "Canonical category/service names"
+  table (Phase 3 Task 3a) must appear as an **unaltered, contiguous substring**
+  in the page's **H1** and **title tag**, and must be the page's **breadcrumb
+  label verbatim**. Hard-fail on any mismatch, and hard-fail if a category/
+  service page has no entry in the canonical table at all. This is the
+  automated backstop that keeps the names the client puts into their real GBP
+  identical everywhere they appear on the site — the same class of recurring-
+  risk gate as the contrast, section-alternation, and hub-coverage checks.
 
 ## Warnings (non-blocking, reported but don't stop deploy)
 - Title tag outside ~50–60 characters

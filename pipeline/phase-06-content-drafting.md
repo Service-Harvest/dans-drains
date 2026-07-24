@@ -68,6 +68,37 @@ then all remaining category/service pages, then About/Contact.
 10. SEO elements: title tag, meta description, H1, H2s, internal links used,
     outbound link used.
 
+### The approved canonical name must appear verbatim (H1, title, breadcrumb)
+
+Every category/service page has one **canonical name** — the exact name approved
+at the Phase 3 checkpoint and recorded in `architecture.md`'s "Canonical
+category/service names" table (Phase 3 Task 3a). That name is what goes into the
+client's real GBP, so the site must use it **consistently, unaltered, everywhere
+the category/service is labeled**. Do not independently re-word it while drafting
+(this is a real, shipped bug class — the same category ended up as "Drainage
+Service," "Drainage Services," and "Drainage and Sewer Services" across the H1,
+title, and breadcrumb of one page).
+
+The rule, mirroring the homepage-H1 rule above:
+
+- **H1:** must contain the canonical name as an **unaltered, contiguous,
+  exact-match substring.** Wrap marketing language around it (adjectives before,
+  geo/qualifiers after) — e.g. canonical `Drainage Service` → `Trusted Drainage
+  Service in Westchester County, NY` — but never reword, pluralize, abbreviate,
+  or expand the name itself (`Drainage Services`, `Drainage & Sewer Services`
+  all fail).
+- **Title tag:** the canonical name must likewise appear as an unaltered
+  contiguous substring in the core keyword phrase (before the ` | Brand` suffix).
+  Watch for splitting it with an inserted word (`Hot Water System & Water Heater
+  Repair` does NOT contain the canonical `Hot Water System Repair`).
+- **Breadcrumb / nav label:** the canonical name **verbatim**, plain, no wrapping.
+- **Footer link, Services-hub heading, and `Service`-schema `name`** for the page
+  also use the canonical name.
+
+`scripts/validate.js` reads `architecture.md`'s canonical table and **hard-fails**
+any page whose H1, title, or breadcrumb doesn't carry the approved name intact
+(see Phase 12) — so drafting to this rule is not optional.
+
 ## Word count guidance (category/service pages)
 Target roughly **1500–2500 words** of real body copy per page — but only
 where there's genuine content/research depth to support that length. This
@@ -259,6 +290,19 @@ Phase 3 requires it and Phase 9 schemas it — this is that definition:
    the card's link/anchor text), a short real description (its own meta
    description is a good source — don't invent new copy), and a "Learn
    More" link to the page.
+   - **The category grouping's own heading must be a link to that category's
+     dedicated page** — not plain text sitting above a card grid. Every parent
+     grouping on the hub that *has* a dedicated overview page gets its heading
+     wrapped in a link to that page, with the exact canonical category name as
+     the anchor text (this also satisfies the Services-hub coverage check for
+     the category itself). A heading that reads as a category but isn't
+     clickable is a dead end for users who want the category overview rather
+     than one specific child service. (A catch-all bucket with *no* dedicated
+     page — e.g. the primary-category "general plumbing" grouping and its
+     sub-group H3s — has nothing to link to, so those headings stay plain; only
+     groupings with a real page get a linked heading.) When the heading carries
+     the link, the framing sentence beneath it does not also need to repeat a
+     link to the same page.
    - **This exception applies to this one page only.** Every other page on
      the site — including the 4 category overview pages themselves — keeps
      the existing full in-body-contextual-link requirement unchanged. Do

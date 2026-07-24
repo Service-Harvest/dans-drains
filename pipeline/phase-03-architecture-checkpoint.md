@@ -110,6 +110,36 @@ scratch on a later edit; always append/check against what's there.
 The full architecture output (Task 1) becomes this file — the permanent
 source of truth every later phase reads from.
 
+### Task 3a — The canonical category/service names table (REQUIRED, machine-readable)
+
+`architecture.md` MUST include a section titled **"Canonical category/service
+names"** containing a two-column markdown table of `| Slug | Canonical Name |`
+for **every** category and service page — the exact names approved at this
+checkpoint, which are also the exact names that go into the client's real
+Google Business Profile.
+
+This table is the **single source of truth** for how each category/service is
+named anywhere it is *labeled* on the site. Later phases must use the canonical
+name verbatim; they must never independently re-word, pluralize, abbreviate, or
+expand it. Specifically (enforced by `scripts/validate.js`, see Phase 12):
+
+- The canonical name must appear as an **unaltered, contiguous, exact-match
+  substring** in each page's **H1** and **title tag** (marketing language may
+  wrap around it — adjectives before, geo/qualifiers after — exactly like the
+  homepage-H1 rule in Phase 6 — but the name itself stays intact).
+- The canonical name must be the page's **breadcrumb / nav label verbatim**,
+  with no wrapping.
+- Footer links, the Services-hub heading, and the `Service`-schema `name` for
+  that page use the canonical name too.
+
+Do not scatter differently-worded variants across the architecture (e.g. an H1
+column that says "Drainage Services" while the priority list says "Drainage
+Service"): the checkpoint-approved name is the one true spelling, and the table
+records it once for everything downstream to read. `validate.js` parses this
+exact table (2-column `| Slug | Canonical Name |`) and hard-fails any page whose
+H1/title/breadcrumb don't carry the approved name intact — so the table must be
+present and complete before Phase 12.
+
 ## Task 4 — Produce the checkpoint output for the user
 
 This is what the user actually reviews. Format it exactly like this, since

@@ -1,7 +1,7 @@
 /* Dan's Drains — authored page bodies (Phase 5/6). Attached onto content-data.js.
    All prose here is authored per page. build.js applies structure. */
 module.exports = function (exp) {
-  const { CATS, CATALOG, catName } = exp;
+  const { CATS, CATALOG, catName, CANONICAL } = exp;
 
   const heroFile = (slug) => "og-" + slug.replace(/-westchester-ny$/, "") + ".webp";
 
@@ -206,17 +206,20 @@ ${G.ctaBand("Ready for a plumber who answers the phone and shows up? Call Dan's 
       })
       .join("\n");
 
-    // category sections
+    // Category sections. The category HEADING itself links to that category's
+    // dedicated page (anchor = the exact canonical name), so the parent grouping
+    // is clickable, not just plain text over a card grid. Framing sentences stay
+    // plain — the heading carries the link.
     const catFrames = {
-      "drainage-service-westchester-ny": "From a single slow sink to a main-line backup, see [[LINK:drainage-service-westchester-ny|everything under our drainage and sewer work]].",
-      "septic-system-service-westchester-ny": "For homes on a septic system, we handle [[LINK:septic-system-service-westchester-ny|the plumbing side of septic care]].",
-      "gasfitter-westchester-ny": "Licensed gas work matters — read about [[LINK:gasfitter-westchester-ny|our gas line services and safety approach]].",
-      "bathroom-remodeler-westchester-ny": "Planning a bathroom project? Here is [[LINK:bathroom-remodeler-westchester-ny|how we handle bathroom plumbing]].",
-      "water-damage-restoration-westchester-ny": "Catch leaks before they spread with [[LINK:water-damage-restoration-westchester-ny|our water damage prevention help]].",
+      "drainage-service-westchester-ny": "From a single slow sink to a main-line backup, we clear, inspect, and maintain the drains and sewer lines in your home.",
+      "septic-system-service-westchester-ny": "For homes on a septic system, we handle the plumbing side of septic care — the drains, lines, and fixtures that feed the tank.",
+      "gasfitter-westchester-ny": "Licensed gas work matters. We handle gas line repairs, connections, and safety checks for your home.",
+      "bathroom-remodeler-westchester-ny": "Planning a bathroom project? We handle the rough-in and fixture plumbing that makes a remodel last.",
+      "water-damage-restoration-westchester-ny": "Catch leaks before they spread. We find and stop the plumbing source and add safeguards that warn you early.",
     };
     const catHtml = CATS.map((c) => {
       const list = CATALOG.filter((s) => s.cat === c.slug);
-      return `<div class="hub-cat"><h3>${c.name}</h3><p>${catFrames[c.slug]}</p>${list.length ? grid(list) : ""}</div>`;
+      return `<div class="hub-cat"><h3>[[LINK:${c.slug}|${c.name}]]</h3><p>${catFrames[c.slug]}</p>${list.length ? grid(list) : ""}</div>`;
     }).join("\n");
 
     return `<section class="hero"><div class="container">
@@ -388,7 +391,8 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
       meta: metaText,
       metaPlain: metaText.replace(/&[a-z]+;/g, "").replace(/<[^>]+>/g, ""),
       h1: o.h1,
-      serviceName: o.serviceName || o.h1.replace(/\s+in Westchester County.*$/, ""),
+      // Schema Service name + breadcrumb label = the exact canonical name.
+      serviceName: CANONICAL[o.slug] || o.serviceName || o.h1,
       serviceType: o.serviceType,
       ogImage: heroFile(o.slug),
       hero: { file: heroFile(o.slug), alt: o.heroAlt },
@@ -402,7 +406,8 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
       faqs: o.faqs,
       localDetails: o.localDetails || "",
       angle: o.angle || "",
-      trail: trailFor(o.slug, o.h1short || o.serviceName || o.h1, o.cat, isCategory),
+      // Breadcrumb label is the exact canonical name, plain (no wrapping).
+      trail: trailFor(o.slug, CANONICAL[o.slug] || o.h1, o.cat, isCategory),
     };
   }
 
