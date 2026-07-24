@@ -94,23 +94,30 @@ ${card("15+ Years Experience", "From quick fixes to bigger repairs, we have seen
 </div>
 </div></section>
 
-${prioSection("", "right", "Fast Emergency Plumbing Help", "emergency-plumbing-repair-westchester-ny", "og-emergency-plumbing-repair.webp", "Dan's Drains plumber shutting off a home water supply valve during an emergency call", `<p>When a pipe bursts or water is spreading across the floor, you do not have time to shop around. We keep room in the day for urgent calls and will stay on the phone to help you shut off the water before we arrive.</p><p>Once we are there, we find the source, stop the water, and explain your options before starting. You get a clear price up front, not a frightening number after the fact.</p>`, `For burst pipes and sudden leaks, count on [[LINK:emergency-plumbing-repair-westchester-ny|our round-the-clock emergency response]] to get things under control quickly.`)}
+<section class="section content"><div class="container">
+<h2>Reviews &amp; Google Business Profile</h2>
+<p>We are proud of the reputation we have built in Westchester County by doing honest work and treating people right. Verified reviews and our Google Business Profile will appear here.</p>
+<div class="embed-holder">Google reviews widget placeholder — to be connected.</div>
+<div class="embed-holder" style="margin-top:1rem">Google Business Profile map embed placeholder — to be connected.</div>
+</div></section>
 
-${prioSection("section-alt", "left", "Water Heater Installation Done Right", "water-heater-installation-westchester-ny", "og-water-heater-installation.webp", "New water heater installed in a clean Westchester County basement by Dan's Drains", `<p>A new water heater is a big purchase, so we help you get it right the first time. We size the unit to how your household actually uses hot water, then install it safely and to code.</p><p>Whether you want a straightforward tank replacement or you are weighing a tankless upgrade, we give you the honest trade-offs instead of pushing the priciest option.</p>`, `See how we handle [[LINK:water-heater-installation-westchester-ny|sizing and installing a new water heater]] for Westchester homes of every age.`)}
+${prioSection("section-alt", "right", "Fast Emergency Plumbing Help", "emergency-plumbing-repair-westchester-ny", "og-emergency-plumbing-repair.webp", "Dan's Drains plumber shutting off a home water supply valve during an emergency call", `<p>When a pipe bursts or water is spreading across the floor, you do not have time to shop around. We keep room in the day for urgent calls and will stay on the phone to help you shut off the water before we arrive.</p><p>Once we are there, we find the source, stop the water, and explain your options before starting. You get a clear price up front, not a frightening number after the fact.</p>`, `For burst pipes and sudden leaks, count on [[LINK:emergency-plumbing-repair-westchester-ny|our round-the-clock emergency response]] to get things under control quickly.`)}
+
+${prioSection("", "left", "Water Heater Installation Done Right", "water-heater-installation-westchester-ny", "og-water-heater-installation.webp", "New water heater installed in a clean Westchester County basement by Dan's Drains", `<p>A new water heater is a big purchase, so we help you get it right the first time. We size the unit to how your household actually uses hot water, then install it safely and to code.</p><p>Whether you want a straightforward tank replacement or you are weighing a tankless upgrade, we give you the honest trade-offs instead of pushing the priciest option.</p>`, `See how we handle [[LINK:water-heater-installation-westchester-ny|sizing and installing a new water heater]] for Westchester homes of every age.`)}
 
 ${G.ctaBand("Have a plumbing problem that will not wait? Let's talk today.", "./")}
 
-${prioSection("", "right", "Drain Cleaning That Actually Lasts", "drain-cleaning-westchester-ny", "og-drain-cleaning.webp", "Dan's Drains technician clearing a slow kitchen drain in a Westchester County home", `<p>A slow or clogged drain is more than an annoyance — it is a sign something is building up in the line. We clear the blockage and look at why it happened, so it does not come right back.</p><p>Being the company named Dan's Drains, this is bread-and-butter work for us. We do it clean, and we tell you if a recurring clog points to a bigger issue.</p>`, `Learn what sets [[LINK:drain-cleaning-westchester-ny|a thorough drain cleaning visit]] apart from a quick plunge-and-go.`)}
+${prioSection("section-alt", "right", "Drain Cleaning That Actually Lasts", "drain-cleaning-westchester-ny", "og-drain-cleaning.webp", "Dan's Drains technician clearing a slow kitchen drain in a Westchester County home", `<p>A slow or clogged drain is more than an annoyance — it is a sign something is building up in the line. We clear the blockage and look at why it happened, so it does not come right back.</p><p>Being the company named Dan's Drains, this is bread-and-butter work for us. We do it clean, and we tell you if a recurring clog points to a bigger issue.</p>`, `Learn what sets [[LINK:drain-cleaning-westchester-ny|a thorough drain cleaning visit]] apart from a quick plunge-and-go.`)}
 
-${prioSection("section-alt", "left", "Full Drainage &amp; Sewer Services", "drainage-service-westchester-ny", "og-drainage-service.webp", "Dan's Drains van and drainage equipment outside a Westchester County property", `<p>Beyond a single slow sink, we handle the whole drainage picture: main-line clogs, grease, root intrusion, and video inspections to see exactly what is happening underground.</p><p>For homes on older clay or cast-iron lines — common in this part of Westchester — that camera work saves a lot of guesswork and digging.</p>`, `Explore the full range of [[LINK:drainage-service-westchester-ny|drainage and sewer solutions we offer]] across the county.`)}
+${prioSection("", "left", "Full Drainage &amp; Sewer Services", "drainage-service-westchester-ny", "og-drainage-service.webp", "Dan's Drains van and drainage equipment outside a Westchester County property", `<p>Beyond a single slow sink, we handle the whole drainage picture: main-line clogs, grease, root intrusion, and video inspections to see exactly what is happening underground.</p><p>For homes on older clay or cast-iron lines — common in this part of Westchester — that camera work saves a lot of guesswork and digging.</p>`, `Explore the full range of [[LINK:drainage-service-westchester-ny|drainage and sewer solutions we offer]] across the county.`)}
 
-<section class="section content"><div class="container">
+<section class="section section-alt content"><div class="container">
 <h2>Serving All of Westchester County</h2>
 <p>We are based in Armonk and travel to homes and small businesses throughout the area. Our regular service areas include Armonk, Pleasantville, Mount Kisco, Yonkers, Bedford, and Scarsdale.</p>
 <p>Because we work across the county every week, we know its housing stock well — from older homes with mixed pipe materials to newer builds with finished basements and sump pumps. That local knowledge helps us solve problems faster.</p>
 </div></section>
 
-<section class="section section-alt content"><div class="container">
+<section class="section content"><div class="container">
 <h2>How Working With Us Works</h2>
 <p>We keep the process simple and clear from the first call to the finished job.</p>
 <ol>
@@ -132,13 +139,6 @@ ${prioSection("section-alt", "left", "Full Drainage &amp; Sewer Services", "drai
 <li>Same-day service available</li>
 <li>Upfront, honest pricing</li>
 </ul>
-</div></section>
-
-<section class="section content"><div class="container">
-<h2>Reviews &amp; Google Business Profile</h2>
-<p>We are proud of the reputation we have built in Westchester County by doing honest work and treating people right. Verified reviews and our Google Business Profile will appear here.</p>
-<div class="embed-holder">Google reviews widget placeholder — to be connected.</div>
-<div class="embed-holder" style="margin-top:1rem">Google Business Profile map embed placeholder — to be connected.</div>
 </div></section>
 
 <section class="section section-alt" id="faq"><div class="container">

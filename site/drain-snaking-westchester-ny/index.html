@@ -218,12 +218,15 @@
 (function () {
   var POPUP_ID = "popup-xHJhkUk8Wps0ag0Dokml";
   var allowShow = false;
-  function popupEls() {
-    return [document.getElementById(POPUP_ID + "-wrapper"), document.getElementById(POPUP_ID + "-overlay")].filter(Boolean);
+  function setDisp(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.style.setProperty("display", val, "important");
   }
   function hidePopup() {
     if (allowShow) return;
-    popupEls().forEach(function (el) { el.style.setProperty("display", "none", "important"); });
+    // Suppressing the auto-show only needs the overlay + wrapper hidden.
+    setDisp(POPUP_ID + "-overlay", "none");
+    setDisp(POPUP_ID + "-wrapper", "none");
   }
   var observer = new MutationObserver(hidePopup);
   observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ["style"] });
@@ -233,10 +236,16 @@
     if (e.target.closest(".request-estimate-cta")) {
       e.preventDefault();
       allowShow = true;
-      popupEls().forEach(function (el) {
-        var isOverlay = el.id.indexOf("-overlay") !== -1;
-        el.style.setProperty("display", isOverlay ? "flex" : "block", "important");
-      });
+      // Reopen must restore EVERY element GHL's own close handler hides — not
+      // just the overlay + wrapper. Confirmed by live DOM inspection: GHL's
+      // close sets the OUTER form container (POPUP_ID + "-div") to display:none
+      // as well. Restoring only the wrapper + overlay leaves that container
+      // hidden, so the 2nd (and later) opens only dim the screen with no
+      // visible form. Restore all three, matching the display values GHL uses
+      // when it shows the popup itself (overlay:flex, div/wrapper:block).
+      setDisp(POPUP_ID + "-overlay", "flex");
+      setDisp(POPUP_ID + "-div", "block");
+      setDisp(POPUP_ID + "-wrapper", "block");
     }
   });
 })();

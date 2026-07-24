@@ -59,22 +59,41 @@ system and take direct control of the DOM elements it creates:
    `display: block` on the wrapper element) — not just clear your own
    override.
 
+3. **Third gotcha — the popup only reopens ONCE unless the reopen handler
+   restores the widget's OUTER container too.** This only shows up in a full
+   open → close → open *cycle*, not a single open, and it is a real shipped
+   bug: the first click opens the form correctly, but after the user closes it
+   with the widget's own close (×) button, a second click on the trigger dims
+   the screen with the overlay yet shows **no form** and no obvious way to
+   recover. Root cause (confirmed by live DOM inspection across a close): the
+   widget's close handler hides more than the overlay — it also sets the
+   popup's **outer form container** (`#[POPUP_ID]-div`, the parent of the
+   `-wrapper`) to `display: none`, and wipes the overlay's inline style. A
+   reopen handler that only restores `-wrapper` and `-overlay` therefore leaves
+   that outer `-div` hidden, so the overlay dims but the form is gone. **The
+   reopen handler must restore all three** elements the widget uses when it
+   shows the popup itself: `-overlay` → `flex`, `-div` → `block`, `-wrapper` →
+   `block`. (Suppression on load still only needs `-overlay` + `-wrapper`
+   hidden.) Verify the exact ID suffixes against the live DOM — some embeds
+   nest these differently.
+
 Reference implementation (adapt the `POPUP_ID` and trigger selector, verify
-the wrapper/overlay ID suffixes match what the actual embed generates):
+the wrapper/overlay/div ID suffixes match what the actual embed generates):
 
 ```html
 <script>
 (function () {
   var POPUP_ID = "popup-XXXXXXXXXXXXXXXXXXXXXX"; // match the embed's real form ID
   var allowShow = false;
-  function popupEls() {
-    return [document.getElementById(POPUP_ID + "-wrapper"), document.getElementById(POPUP_ID + "-overlay")].filter(Boolean);
+  function setDisp(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.style.setProperty("display", val, "important");
   }
   function hidePopup() {
     if (allowShow) return;
-    popupEls().forEach(function (el) {
-      el.style.setProperty("display", "none", "important");
-    });
+    // Suppressing the auto-show only needs the overlay + wrapper hidden.
+    setDisp(POPUP_ID + "-overlay", "none");
+    setDisp(POPUP_ID + "-wrapper", "none");
   }
   // The embed can auto-show its wrapper/overlay regardless of the
   // data-trigger-type config above (confirmed by live testing) — suppress
@@ -88,26 +107,28 @@ the wrapper/overlay ID suffixes match what the actual embed generates):
     if (e.target.closest(".request-estimate-cta")) {
       e.preventDefault();
       allowShow = true;
-      popupEls().forEach(function (el) {
-        // The widget's own CSS gives its overlay a default of display:none
-        // (used to keep it hidden until genuinely opened), so simply
-        // removing our override falls back to that same hidden state.
-        // Set the display values it actually needs explicitly instead.
-        var isOverlay = el.id.indexOf("-overlay") !== -1;
-        el.style.setProperty("display", isOverlay ? "flex" : "block", "important");
-      });
+      // Restore EVERY element the widget's own close handler hides — not just
+      // the overlay + wrapper. Its close sets the OUTER container (-div) to
+      // display:none too (third gotcha above), so restoring only wrapper +
+      // overlay leaves the form hidden on the 2nd and later opens. Set the
+      // display values the widget uses when it shows the popup itself.
+      setDisp(POPUP_ID + "-overlay", "flex");
+      setDisp(POPUP_ID + "-div", "block");
+      setDisp(POPUP_ID + "-wrapper", "block");
     }
   });
 })();
 </script>
 ```
 
-3. **Verify both behaviors live in-browser before calling this phase
-   done** — load a fresh page and confirm the popup does NOT auto-open,
-   then click a `.request-estimate-cta` link and confirm it DOES open and
-   is visually correct. Don't just confirm the config attribute is present
-   in the HTML; that alone doesn't prove the behavior works, per the
-   gotcha above.
+4. **Verify all THREE behaviors live in-browser before calling this phase
+   done** — load a fresh page and confirm the popup does NOT auto-open; click
+   a `.request-estimate-cta` link and confirm it DOES open and is visually
+   correct; then **close it and click the trigger again, at least twice**,
+   confirming the form reopens fully each time (not just a dimmed screen).
+   Testing a single open is exactly how the reopen bug above shipped
+   undetected. Don't just confirm the config attribute is present in the HTML;
+   that alone doesn't prove the behavior works.
 
 ## Technical check on each embed (before accepting it)
 - Does it block rendering of the surrounding page content? If so, load it

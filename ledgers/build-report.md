@@ -137,3 +137,31 @@
 ## Phase 12 gate
 - `node scripts/validate.js` → **All checks passed, 0 failures** (16 non-blocking
   length warnings). Safe to deploy.
+
+## Phase 13 — Deploy (LIVE)
+- **Repo:** Service-Harvest/dans-drains (public), created and pushed. Pages source
+  = GitHub Actions. Deploy workflow run: **validate ✅ + deploy ✅**.
+- **Canonical domain (client choice):** apex `hexorasystems.com`; `www` 301-redirects
+  to apex (verified live: `www` → `HTTP/2 301 → https://hexorasystems.com/`).
+- **Domain collision handled:** `hexorasystems.com` was bound to the sibling repo
+  `petes-plumbing-v2`. Per the client's approval, the domain was released there
+  (Pages cname cleared) and bound to `dans-drains`. Note: the Pete's mock site is
+  no longer served on this domain. **Classification of this operational step: both**
+  — the *mechanism* (release-then-bind, verify serving not just the API response)
+  is the documented Phase 13 procedure and needed no change; the *facts* (which
+  domain, which repos) are client-specific. No reusable-file change, so nothing
+  ported to `pipeline-template/`.
+- **Live serving verified (not just the API binding):** `curl https://hexorasystems.com/`
+  → HTTP 200 serving THIS build (`<title>Plumber in Westchester County, NY | Dan's
+  Drains</title>`); deep page `/drain-cleaning-westchester-ny/` → 200. `https_enforced`
+  = true. `/site/CNAME` (hexorasystems.com) was part of the last successful deploy.
+- **IndexNow:** deploy workflow ping returned **HTTP 202** (accepted).
+- **Lighthouse (homepage, desktop):** Performance **100**, Accessibility **100**,
+  SEO **92**, Best Practices **77**. LCP 665ms, CLS 0.001, FCP 402ms — strong Core
+  Web Vitals. The Best-Practices dip is from the third-party GHL chat/form scripts
+  (leadconnectorhq / serviceharvest), not the site's own code.
+- **On-page (homepage):** onpage_score **100**, canonical = apex, is_https true,
+  title 48 chars, meta 155 chars, readability ~8th grade (Flesch-Kincaid 62.7),
+  title/description-to-content consistency 1.0.
+- **One render-blocking stylesheet** (the single `main.css`) is by design (one
+  minimal static stylesheet, no @import, no webfonts).

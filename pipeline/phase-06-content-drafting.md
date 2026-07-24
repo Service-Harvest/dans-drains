@@ -97,12 +97,24 @@ research" is never licence for generic copy — every Tier 3 page still needs it
 own angle, checked against `/ledgers/content-ledger.md`, in the client's voice,
 with no invented facts.
 
-Homepage follows the same spirit but with its own structure: hero, why-choose-
-us (4 differentiators, drawn from the intake's unique selling points), reviews
-placeholder (no invented review data), homepage-linked priority sections
-(full-width, not cards — see below), local-service section, process section,
-trust/credentials section, GBP embed placeholder, 6–8 FAQs (same
-`<section id="faq">` wrapper convention as above), final CTA.
+Homepage follows the same spirit but with its own structure. The **section
+order is fixed for the first three full-width bands** and must be exactly:
+
+1. **Hero** (H1, subhead, CTA pair, trust badges).
+2. **Why-choose-us / differentiators** (4 differentiators, drawn from the
+   intake's unique selling points).
+3. **Reviews section** (the Google reviews widget — placeholder when no review
+   connection exists yet, real once connected; no invented review data either
+   way).
+
+The reviews section is **always third, immediately after the differentiators**,
+whether or not real review data is connected yet — do not bury it lower down or
+leave its placement to chance. After those three, the remaining bands follow:
+homepage-linked priority sections (full-width, not cards — see below),
+local-service section, process section, trust/credentials section, GBP embed
+placeholder, 6–8 FAQs (same `<section id="faq">` wrapper convention as above),
+final CTA. (Section background colors must still alternate per Phase 4a; when
+you fix the order, re-check the whole band sequence.)
 
 **Homepage H1 — head term wrapped in real differentiators, never the bare
 string.** The homepage H1 must keep the primary category and the geo-target
