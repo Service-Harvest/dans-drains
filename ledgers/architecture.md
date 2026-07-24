@@ -67,6 +67,67 @@
 
 *(The per-category tables in "Page inventory" below reflect the original grouping and are superseded by this section for nesting; URLs/titles/metadata there remain accurate.)*
 
+## Category nesting table (machine-readable — SOURCE OF TRUTH for validate.js)
+
+> Slug → parent-category slug for every service page. `plumber` = the primary
+> category (no dedicated page; its role is served by the homepage, so a
+> primary-bucket service's parent backlink points to `/`). `scripts/validate.js`
+> parses this table to enforce, in BOTH directions, that every service page
+> links back to its parent (category page, or homepage for `plumber`) and that
+> every category page links to every one of its children. Keep this table in
+> sync with `CATALOG` in scripts/content-data.js whenever a service is re-nested
+> (see phase-14 recategorization flow).
+
+| Service Slug | Parent Category Slug |
+|---|---|
+| emergency-plumbing-repair-westchester-ny | plumber |
+| water-heater-installation-westchester-ny | plumber |
+| tankless-water-heater-installation-westchester-ny | plumber |
+| gas-water-heater-installation-westchester-ny | gasfitter-westchester-ny |
+| hot-water-system-repair-westchester-ny | plumber |
+| boiler-installation-westchester-ny | gasfitter-westchester-ny |
+| toilet-repair-westchester-ny | plumber |
+| toilet-installation-westchester-ny | bathroom-remodeler-westchester-ny |
+| leak-detection-westchester-ny | water-damage-restoration-westchester-ny |
+| pipe-repair-westchester-ny | plumber |
+| pipe-replacement-westchester-ny | plumber |
+| burst-pipe-repair-westchester-ny | water-damage-restoration-westchester-ny |
+| frozen-pipe-repair-westchester-ny | plumber |
+| repiping-westchester-ny | plumber |
+| water-line-replacement-westchester-ny | plumber |
+| water-main-repair-westchester-ny | plumber |
+| slab-leak-repair-westchester-ny | water-damage-restoration-westchester-ny |
+| faucet-installation-westchester-ny | plumber |
+| outdoor-faucet-repair-westchester-ny | plumber |
+| sewer-line-repair-westchester-ny | drainage-service-westchester-ny |
+| garbage-disposal-repair-westchester-ny | plumber |
+| shower-installation-westchester-ny | bathroom-remodeler-westchester-ny |
+| shower-valve-replacement-westchester-ny | bathroom-remodeler-westchester-ny |
+| bathtub-installation-westchester-ny | bathroom-remodeler-westchester-ny |
+| sink-installation-westchester-ny | plumber |
+| urinal-installation-westchester-ny | plumber |
+| fixture-replacement-westchester-ny | plumber |
+| sump-pump-installation-westchester-ny | water-damage-restoration-westchester-ny |
+| water-softener-installation-westchester-ny | plumber |
+| water-filtration-system-installation-westchester-ny | plumber |
+| low-water-pressure-repair-westchester-ny | plumber |
+| plumbing-inspection-westchester-ny | plumber |
+| appliance-hook-up-westchester-ny | plumber |
+| laundry-room-plumbing-westchester-ny | plumber |
+| kitchen-plumbing-remodeling-westchester-ny | plumber |
+| rainwater-tank-installation-westchester-ny | plumber |
+| plumbing-maintenance-westchester-ny | plumber |
+| commercial-plumbing-services-westchester-ny | plumber |
+| drain-cleaning-westchester-ny | drainage-service-westchester-ny |
+| hydro-jetting-westchester-ny | drainage-service-westchester-ny |
+| drain-snaking-westchester-ny | drainage-service-westchester-ny |
+| sewer-camera-inspection-westchester-ny | drainage-service-westchester-ny |
+| grease-trap-cleaning-westchester-ny | drainage-service-westchester-ny |
+| septic-tank-service-westchester-ny | septic-system-service-westchester-ny |
+| gas-line-repair-westchester-ny | gasfitter-westchester-ny |
+| bathroom-plumbing-remodeling-westchester-ny | bathroom-remodeler-westchester-ny |
+| water-leak-sensor-installation-westchester-ny | water-damage-restoration-westchester-ny |
+
 ## Canonical category/service names — SOURCE OF TRUTH (approved at the Phase 3 checkpoint)
 
 > These are the exact category and service names the client approved at the

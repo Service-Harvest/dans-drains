@@ -412,6 +412,10 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
       angle: o.angle || "",
       // Breadcrumb label is the exact canonical name, plain (no wrapping).
       trail: trailFor(o.slug, CANONICAL[o.slug] || o.h1, parentCat, isCategory),
+      // Parent for the service->parent backlink: the category slug, or "plumber"
+      // (primary bucket -> backlink points to the homepage). Null for category pages.
+      parentCat: isCategory ? null : parentCat,
+      parentCatName: !isCategory && parentCat && parentCat !== "plumber" ? catName(parentCat) : null,
     };
   }
 

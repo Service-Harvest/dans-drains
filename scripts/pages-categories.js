@@ -29,7 +29,7 @@ module.exports = (ctx) => {
           id: "what",
           h2: "What Our Drainage Services Cover",
           html: `<p>Drainage problems come in many sizes, and we handle the whole range. That includes routine [[LINK:drain-cleaning-westchester-ny|clearing of slow and clogged drains]], deeper cleaning with [[LINK:hydro-jetting-westchester-ny|high-pressure water jetting for grease and roots]], and diagnostic [[LINK:sewer-camera-inspection-westchester-ny|video camera inspections of your sewer line]].</p>
-<p>We also handle mechanical [[LINK:drain-snaking-westchester-ny|snaking and rooter service for stubborn blockages]] and, for commercial kitchens, [[LINK:grease-trap-cleaning-westchester-ny|scheduled grease trap cleaning]]. If your drain is slow, smelly, or backing up, we can find out why.</p>`,
+<p>We also handle mechanical [[LINK:drain-snaking-westchester-ny|snaking and rooter service for stubborn blockages]] and, for commercial kitchens, [[LINK:grease-trap-cleaning-westchester-ny|scheduled grease trap cleaning]]. When the trouble is the main line itself, we take on [[LINK:sewer-line-repair-westchester-ny|repairs to a cracked or root-invaded sewer line]]. If your drain is slow, smelly, or backing up, we can find out why.</p>`,
         },
         {
           id: "signs",
@@ -166,7 +166,7 @@ module.exports = (ctx) => {
           id: "what",
           h2: "What Our Gas Line Services Include",
           html: `<p>We handle the gas piping that feeds appliances like water heaters, boilers, ranges, and dryers. That covers running new lines for an appliance, repairing damaged or corroded pipe, and checking connections for leaks.</p>
-<p>If you suspect a problem with an existing line, our [[LINK:gas-line-repair-westchester-ny|gas line repair and leak response service]] is the right place to start. We also connect gas appliances safely as part of a broader project.</p>`,
+<p>If you suspect a problem with an existing line, our [[LINK:gas-line-repair-westchester-ny|gas line repair and leak response service]] is the right place to start. We also connect gas appliances safely — from [[LINK:gas-water-heater-installation-westchester-ny|installing a gas-fired water heater]] to a full [[LINK:boiler-installation-westchester-ny|gas boiler installation and hookup]] — as part of a broader project.</p>`,
         },
         {
           id: "safety",
@@ -245,7 +245,7 @@ module.exports = (ctx) => {
         {
           id: "fixtures",
           h2: "Fixtures We Install and Connect",
-          html: `<p>A bathroom is a collection of fixtures that all need solid plumbing behind them. We install and connect toilets, sinks and vanities, showers, tubs, and faucets, and we make sure the drains and vents are right so nothing gurgles or smells later.</p>
+          html: `<p>A bathroom is a collection of fixtures that all need solid plumbing behind them. We install and connect toilets — including [[LINK:toilet-installation-westchester-ny|setting and sealing a new toilet]] — sinks and vanities, showers with [[LINK:shower-valve-replacement-westchester-ny|a fresh shower valve for steady temperature]], tubs, and faucets, and we make sure the drains and vents are right so nothing gurgles or smells later.</p>
 <p>If your project also touches the vanity plumbing, a new [[LINK:faucet-installation-westchester-ny|bathroom faucet fitted and sealed]] is a small detail that makes a big difference in the finished look.</p>`,
         },
         {
@@ -308,7 +308,7 @@ module.exports = (ctx) => {
 <li>A sump pump that stopped working during heavy rain.</li>
 <li>A slow, hidden leak behind a wall that goes unnoticed for weeks.</li>
 </ul>
-<p>Catching any of these early is the difference between a quick repair and a major cleanup.</p>`,
+<p>One of the sneakiest is a leak in a pipe beneath a concrete slab — our [[LINK:slab-leak-repair-westchester-ny|slab leak location and repair]] finds it before it undermines the floor. Catching any of these early is the difference between a quick repair and a major cleanup.</p>`,
         },
         {
           id: "prevent",

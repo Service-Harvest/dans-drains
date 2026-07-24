@@ -32,6 +32,7 @@ checkpoint explicitly marked below.
 /pipeline/phase-14-post-launch/14b-add-new-page.md
 /pipeline/phase-14-post-launch/14c-sitewide-fact-update.md
 /pipeline/phase-14-post-launch/14d-domain-migration.md
+/pipeline/phase-14-post-launch/14e-recategorize-service.md
 
 /ledgers/anchor-ledger.md        <- every internal anchor text ever used, generated in Phase 3, updated forever after
 /ledgers/content-ledger.md       <- every local detail/angle used per page, generated in Phase 6, updated forever after

@@ -450,6 +450,7 @@ p { margin: 0 0 var(--sp-4); max-width: var(--measure); }
   max-width: none;
   text-wrap: balance;
 }
+.back-link { text-align: center; }
 .embed-holder { background: var(--bg); border: 1px dashed var(--line);
   border-radius: var(--radius); padding: var(--sp-6); text-align: center;
   color: var(--muted); font-size: var(--fs-sm); }

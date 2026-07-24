@@ -264,6 +264,29 @@ function loadCanonicalNames() {
   return Object.keys(map).length ? map : null;
 }
 
+// Parse the "Category nesting table" in ledgers/architecture.md into a
+// { serviceSlug -> parentCategorySlug } map ("plumber" = primary bucket, whose
+// parent role is served by the homepage). Source of truth for the parent<->child
+// link gate below. Returns null if absent.
+function loadNestingTable() {
+  if (!fs.existsSync(ARCHITECTURE)) return null;
+  const text = readFile(ARCHITECTURE);
+  const secMatch = text.match(/##[^\n]*[Nn]esting table[^\n]*\n([\s\S]*?)(?:\n## |\s*$)/);
+  if (!secMatch) return null;
+  const map = {};
+  for (const rawLine of secMatch[1].split("\n")) {
+    const line = rawLine.trim();
+    if (!line.startsWith("|")) continue;
+    if (/^\|[\s:-]+\|/.test(line)) continue;
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim().replace(/^`(.*)`$/, "$1"));
+    if (cells.length < 2) continue;
+    const slug = cells[0], parent = cells[1];
+    if (!slug || slug.toLowerCase() === "service slug") continue;
+    if (parent) map[slug] = parent;
+  }
+  return Object.keys(map).length ? map : null;
+}
+
 function loadSitemapUrls() {
   if (!fs.existsSync(SITEMAP_FILE)) return null;
   const text = readFile(SITEMAP_FILE);
@@ -666,6 +689,57 @@ if (canonicalNames === null) {
     }
     if (bc !== canonical) {
       fail(`Canonical name mismatch on ${url}: breadcrumb label "${bc}" must be exactly the approved name "${canonical}".`);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------
+// Parent <-> child linking — every service page must link back to its parent,
+// and every category page must link to every one of its children (both in body
+// copy). Nesting comes from architecture.md's "Category nesting table". A
+// service under the primary "plumber" bucket links back to the HOMEPAGE (/),
+// since the primary category has no dedicated page — the homepage serves that
+// role. This is the backstop for the recurring parent<->child link gap.
+// ---------------------------------------------------------------------
+const nesting = loadNestingTable();
+if (nesting === null) {
+  warn(`No "Category nesting table" found in ${ARCHITECTURE} — skipping parent/child link checks.`);
+} else {
+  // A. Every service page -> its parent (category page, or homepage for "plumber").
+  for (const [slug, parent] of Object.entries(nesting)) {
+    const url = "/" + slug;
+    const anchors = bodyAnchorsByUrl.get(normalizeUrl(url));
+    if (!anchors) {
+      fail(`Nesting check: service "${slug}" is in architecture.md's nesting table but has no page in /site/.`);
+      continue;
+    }
+    const target = parent === "plumber" ? "/" : "/" + parent;
+    const has = anchors.some((a) => resolveHref(url, a.href) === normalizeUrl(target));
+    if (!has) {
+      const desc = parent === "plumber"
+        ? "the homepage (/) — its parent is the primary category, which has no page of its own (the homepage serves that role)"
+        : `its parent category page ${target}`;
+      fail(`Missing parent backlink on ${url}: no in-body link back to ${desc}.`);
+    }
+  }
+  // B. Every category page -> every one of its declared children.
+  const catChildren = {};
+  for (const [slug, parent] of Object.entries(nesting)) {
+    if (parent === "plumber") continue;
+    (catChildren[parent] = catChildren[parent] || []).push(slug);
+  }
+  for (const [cat, kids] of Object.entries(catChildren)) {
+    const catUrl = "/" + cat;
+    const anchors = bodyAnchorsByUrl.get(normalizeUrl(catUrl));
+    if (!anchors) {
+      fail(`Nesting check: category "${cat}" is referenced by the nesting table but has no page in /site/.`);
+      continue;
+    }
+    const linked = new Set(anchors.map((a) => resolveHref(catUrl, a.href)).filter(Boolean));
+    for (const k of kids) {
+      if (!linked.has(normalizeUrl("/" + k))) {
+        fail(`Category ${catUrl} is missing an in-body link to its child service /${k} (every category must link to all of its nested services).`);
+      }
     }
   }
 }

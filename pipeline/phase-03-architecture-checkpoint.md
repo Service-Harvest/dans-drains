@@ -140,6 +140,23 @@ exact table (2-column `| Slug | Canonical Name |`) and hard-fails any page whose
 H1/title/breadcrumb don't carry the approved name intact — so the table must be
 present and complete before Phase 12.
 
+### Task 3b — The category nesting table (REQUIRED, machine-readable)
+
+`architecture.md` MUST also include a section titled **"Category nesting table"**
+containing a two-column markdown table of `| Service Slug | Parent Category Slug |`
+for **every** service page. The parent value is either a secondary category's
+slug, or the literal `plumber` for a service in the primary bucket (the primary
+category has **no dedicated page** — the homepage serves that role, so a
+primary-bucket service's parent backlink points to `/`).
+
+This table is the source of truth for the **parent<->child link gate** in Phase 12:
+`scripts/validate.js` parses it and hard-fails if any service page lacks an
+in-body link back to its parent (its category page, or the homepage for
+`plumber`), or if any category page fails to link in-body to every one of its
+children. Keep it in sync with the nesting whenever a service is re-nested (see
+`phase-14-post-launch/14e-recategorize-service.md`). The table must be present
+and complete before Phase 12.
+
 ## Task 4 — Produce the checkpoint output for the user
 
 This is what the user actually reviews. Format it exactly like this, since

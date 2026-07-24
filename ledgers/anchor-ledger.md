@@ -73,18 +73,24 @@
 | /drainage-service-westchester-ny | /sewer-camera-inspection-westchester-ny | video camera inspections of your sewer line | in-body contextual link |
 | /drainage-service-westchester-ny | /drain-snaking-westchester-ny | snaking and rooter service for stubborn blockages | in-body contextual link |
 | /drainage-service-westchester-ny | /grease-trap-cleaning-westchester-ny | scheduled grease trap cleaning | in-body contextual link |
+| /drainage-service-westchester-ny | /sewer-line-repair-westchester-ny | repairs to a cracked or root-invaded sewer line | in-body contextual link |
 | /drainage-service-westchester-ny | /services | see the rest of the plumbing work we handle | in-body contextual link |
 | /septic-system-service-westchester-ny | /septic-tank-service-westchester-ny | septic-connected line needs attention | in-body contextual link |
 | /septic-system-service-westchester-ny | /services | the other plumbing services we provide | in-body contextual link |
 | /gasfitter-westchester-ny | /gas-line-repair-westchester-ny | gas line repair and leak response service | in-body contextual link |
+| /gasfitter-westchester-ny | /gas-water-heater-installation-westchester-ny | installing a gas-fired water heater | in-body contextual link |
+| /gasfitter-westchester-ny | /boiler-installation-westchester-ny | gas boiler installation and hookup | in-body contextual link |
 | /gasfitter-westchester-ny | /services | the rest of the job under one roof | in-body contextual link |
 | /bathroom-remodeler-westchester-ny | /bathroom-plumbing-remodeling-westchester-ny | full bathroom remodel plumbing | in-body contextual link |
 | /bathroom-remodeler-westchester-ny | /shower-installation-westchester-ny | shower and valve installation | in-body contextual link |
 | /bathroom-remodeler-westchester-ny | /bathtub-installation-westchester-ny | bathtub set and connected properly | in-body contextual link |
+| /bathroom-remodeler-westchester-ny | /toilet-installation-westchester-ny | setting and sealing a new toilet | in-body contextual link |
+| /bathroom-remodeler-westchester-ny | /shower-valve-replacement-westchester-ny | a fresh shower valve for steady temperature | in-body contextual link |
 | /bathroom-remodeler-westchester-ny | /faucet-installation-westchester-ny | bathroom faucet fitted and sealed | in-body contextual link |
 | /bathroom-remodeler-westchester-ny | /services | everything else we can handle on the project | in-body contextual link |
 | /water-damage-restoration-westchester-ny | /leak-detection-westchester-ny | hidden leak detection behind walls and floors | in-body contextual link |
 | /water-damage-restoration-westchester-ny | /water-leak-sensor-installation-westchester-ny | smart leak sensors that alert you early | in-body contextual link |
+| /water-damage-restoration-westchester-ny | /slab-leak-repair-westchester-ny | slab leak location and repair | in-body contextual link |
 | /water-damage-restoration-westchester-ny | /sump-pump-installation-westchester-ny | sump pump is installed and working | in-body contextual link |
 | /water-damage-restoration-westchester-ny | /burst-pipe-repair-westchester-ny | burst pipe response stops the water fast | in-body contextual link |
 | /water-heater-installation-westchester-ny | /tankless-water-heater-installation-westchester-ny | tankless unit that heats water on demand | in-body contextual link |

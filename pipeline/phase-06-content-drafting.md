@@ -58,6 +58,33 @@ then all remaining category/service pages, then About/Contact.
 5. Internal links to parent, services hub, relevant children, 2–4 related
    pages — placed inside body copy (paragraphs, bullets, explanatory text),
    never only in cards/grids/menus/footer.
+5a. **Parent backlink — REQUIRED on every service page, both directions
+    enforced by the Phase 12 gate.** Every service page must contain a real
+    in-body link back to its parent:
+    - a service nested under a **secondary category** → a link back to that
+      **category page**;
+    - a service in the **primary "Plumber" bucket** → a link back to the
+      **HOMEPAGE (`/`)**, NOT the Services hub. The primary category has no
+      dedicated page; the homepage *is* that page, so that is where its
+      services point back to.
+    This backlink is the one link exempt from the golden-rules anchor treatment:
+    a simple, clear control is fine (`Back to [Category]`, or `Back to Home` for
+    primary-bucket services), rendered as a **button** (`class="btn ..."`) so
+    it's exempt from the anchor-uniqueness rule and the ledger — the repeated
+    "Back to …" label is a UI convention, not SEO anchor text. Place it as the
+    natural last piece of body content (a small band before the final CTA)
+    unless a page has a good reason to put it elsewhere. **Deriving this backlink
+    from the page's parent record is strongly recommended** so re-nesting a
+    service (Phase 14e) re-points it automatically.
+5b. **Category pages must link to ALL their children — not just some.** On a
+    category page specifically, every service nested under that category needs a
+    real in-body contextual link from the category page, with **full golden-rules
+    anchor text** (unique sitewide, descriptive, no brand name, never repeated) —
+    this parent→child direction is the SEO-important one. "Most of them" is a
+    fail: the Phase 12 gate cross-references architecture.md's nesting table and
+    hard-fails a category page missing a link to any declared child. When a
+    service is re-nested into a category later, the new parent category page must
+    gain that child link (Phase 14e).
 6. One outbound authority link, in-body, from the approved domain list below.
 7. Mid-page CTA after the 2nd or 3rd section.
 8. 5–6 FAQs, specific to this service/area, not repeated from other pages.

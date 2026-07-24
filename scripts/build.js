@@ -108,6 +108,23 @@ ${G.heroImg(root, p.hero, true)}
   const openCta = G.ctaBand(p.openCta || `Need a plumber in Westchester County? We can usually help the same day.`);
   const finalCta = G.ctaBand(p.finalCta || `Ready to book? Reach ${G.BIZ.nameEnt} for fast, upfront plumbing help.`);
 
+  // Service -> parent backlink (last piece of body content, before the final
+  // CTA). Derived from the page's parent category (single source of truth), so
+  // re-nesting a service automatically re-points its backlink. Rendered as a
+  // button (class="btn"), so it's exempt from the anchor-uniqueness/ledger rules
+  // by design (a simple repeated "Back to ..." control, not SEO anchor text).
+  // Secondary-nested -> the category page; primary("plumber")-nested -> the
+  // homepage (the primary category has no dedicated page; the homepage is it).
+  let backlinkBand = "";
+  if (p.kind === "service") {
+    const backHref = p.parentCat && p.parentCat !== "plumber" ? `../${p.parentCat}/` : "../";
+    const backLabel = p.parentCatName ? `Back to ${p.parentCatName}` : "Back to Home";
+    backlinkBand =
+      `\n<section class="section"><div class="container back-link">` +
+      `<a class="btn btn-secondary" href="${backHref}">&#8592; ${backLabel}</a>` +
+      `</div></section>`;
+  }
+
   const html =
     G.head({ slug, title: p.title, meta: p.meta, ogImage: p.ogImage, schema }) +
     "\n" + breadcrumbHtml(trail, root) +
@@ -115,6 +132,7 @@ ${G.heroImg(root, p.hero, true)}
     "\n" + openCta +
     "\n" + secHtml +
     "\n" + faqHtml +
+    backlinkBand +
     "\n" + finalCta +
     "\n" + G.foot(root);
   writePage(slug, html);

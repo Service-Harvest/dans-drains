@@ -73,6 +73,16 @@ ledger and the sitemap by the time this runs.
   automated backstop that keeps the names the client puts into their real GBP
   identical everywhere they appear on the site — the same class of recurring-
   risk gate as the contrast, section-alternation, and hub-coverage checks.
+- **Parent↔child linking** (cross-referenced against `architecture.md`'s
+  "Category nesting table", Phase 3 Task 3b): hard-fail if **any service page
+  lacks an in-body link back to its parent** — its category page, or the
+  **homepage (`/`)** for a service in the primary "Plumber" bucket (the primary
+  category has no page; the homepage serves that role) — or if **any category
+  page is missing an in-body link to any one of its declared child services**.
+  Both directions are enforced. This is the backstop for the recurring
+  parent↔child link gap (a service moved between categories in Phase 14 that
+  never got its links updated). The child→ backlink may be a simple `Back to …`
+  button; the category→child links must be full golden-rules anchors.
 
 ## Warnings (non-blocking, reported but don't stop deploy)
 - Title tag outside ~50–60 characters
