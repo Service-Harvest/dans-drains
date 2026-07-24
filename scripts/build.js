@@ -130,7 +130,7 @@ function buildCustomPage(p) {
   const body = G.expandLinks(p.body(root), url === "/" ? "/" : url, root);
   const bcrumb = p.trail ? breadcrumbHtml(p.trail, root) + "\n" : "";
   const html =
-    G.head({ slug, title: p.title, meta: p.meta, ogImage: p.ogImage, schema: p.schema() }) +
+    G.head({ slug, title: p.title, meta: p.meta, ogImage: p.ogImage, schema: p.schema(), preload: p.preload }) +
     "\n" + bcrumb + body +
     "\n" + G.foot(root);
   writePage(slug, html);

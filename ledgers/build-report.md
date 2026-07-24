@@ -165,3 +165,48 @@
   title/description-to-content consistency 1.0.
 - **One render-blocking stylesheet** (the single `main.css`) is by design (one
   minimal static stylesheet, no @import, no webfonts).
+
+## Phase 14 edit — homepage hero image, GBP map placement, category re-nesting
+
+### Category nesting analysis (Change 3)
+Original nesting was lopsided: Drainage 5, and Septic/Gasfitter/Bathroom/Water-Damage
+1 each, with ~38 dumped in the primary "Plumber" bucket. Re-nested each service under
+its genuine best-fit category; for genuinely ambiguous services, chose the category
+with fewer nested services to spread the structure out. Result: **6 / 1 / 3 / 5 / 5 / 27**.
+Moves (all keep their existing URLs — only the parent/breadcrumb/hub grouping changed):
+- → **Drainage Service**: Sewer Line Repair (a sewer line is drainage/sewer).
+- → **Gasfitter**: Gas Water Heater Installation (gas appliance), Boiler Installation
+  (typically gas-fired; ambiguous → smaller category).
+- → **Bathroom Remodeler**: Toilet Installation, Shower Installation, Shower Valve
+  Replacement, Bathtub Installation (bathroom installation work; repairs like Toilet
+  Repair stay under Plumber since the category is a *remodeler*).
+- → **Water Damage Restoration Service**: Leak Detection, Sump Pump Installation, Burst
+  Pipe Repair, Slab Leak Repair (all leak/flood-damage work — already cross-linked from
+  that category's page).
+- **Septic System Service** stays at 1 (Septic Tank Service) — legitimately the only
+  septic-specific service; not padded artificially.
+- **Plumber** keeps 27 genuinely-general services (water heaters, general pipe repair,
+  water treatment, kitchen, general fixtures/repairs, inspection/maintenance, commercial).
+Source of truth: the `cat` field in CATALOG (content-data.js); page() derives each
+service's parent from it, so breadcrumbs + hub grouping stay in sync automatically.
+
+### Homepage hero background image (Change 2)
+The homepage hero is now a full-bleed AI-generated photo of the Dan's Drains service
+van (with "DAN'S DRAINS" lettering + a teal water-drop logo on the side) and a team of
+three uniformed plumbers in front, with the H1/subhead/CTAs overlaid on a left-weighted
+dark scrim for legibility. Implemented as a CSS background on `.hero-bg` (no <img>; the
+image is decorative, text carries the meaning) with the image set per-page via the
+`--hero-img` custom property, plus a `<link rel="preload">` for LCP.
+- **Honesty caveat:** the van branding/logo is AI-rendered and illustrative, not a photo
+  of a real Dan's Drains vehicle. Replace with a real branded-vehicle + team photo when
+  available (it also becomes the homepage OG image).
+- **Path gotcha fixed:** a `url()` inside a CSS custom property resolves relative to the
+  *stylesheet*, so `--hero-img` must be `url('../img/og-home.webp')` (relative to
+  /assets/css/), not a document-relative `./assets/img/...` (which 404s). Documented in
+  main.css.
+
+### GBP map placement (Change 1)
+The reviews widget stays 3rd (after the differentiators). The Google Business Profile
+**map** embed placeholder was split out of that section and moved down to its own band
+("Find Us in Westchester County") immediately before the FAQ section, per the client's
+request and the phase-06 homepage order.

@@ -21,7 +21,23 @@ Using the raw category/service list from `/intake/intake-completed.md`:
    treat them as meaningfully different (don't over-merge just to shorten the
    list).
 3. Merge or remove items that are basically the same thing worded differently.
-4. Group every remaining service under its correct parent category.
+4. Group every remaining service under its correct parent category. **Nest for
+   genuine fit first, then balance.** Two standing rules:
+   - **Fit first.** Put each service under the secondary category it truly
+     belongs to — e.g. a sewer-line repair under a Drainage/sewer category, a
+     gas water-heater or boiler under a Gasfitter category, bathroom fixture
+     *installs* under a Bathroom category, leak/flood work under a Water-Damage
+     category — rather than defaulting everything into the primary category's
+     catch-all bucket.
+   - **When a service is genuinely ambiguous, nest it under the category with
+     FEWER services**, to spread the structure out. A lopsided result — most
+     secondary categories with a single nested service while the primary bucket
+     holds 30+ — is a smell that fit-first nesting wasn't done. It is fine for a
+     category to legitimately have only one service (nothing else genuinely fits
+     it); it is not fine to leave services in the primary bucket that clearly
+     belong under a thinly-populated secondary category. Never *invent* a nesting
+     that misrepresents a service just to balance counts — accuracy for the
+     client's real GBP wins over evenness.
 5. Do not over-explain decisions, create homepage-linking notes, or create
    architecture commentary here — that happens in Phase 2/3. This phase is
    purely the cleanup.

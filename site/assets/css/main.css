@@ -282,6 +282,47 @@ p { margin: 0 0 var(--sp-4); max-width: var(--measure); }
           mask: var(--check) center / 0.8rem no-repeat;
 }
 
+/* ---------- Full-bleed image-background hero ----------
+   For a hero that IS a photo (e.g. the branded service vehicle + team on the
+   homepage). The image is set per-page via the `--hero-img` custom property on
+   the section, so this shared stylesheet stays client-neutral. A dark brand
+   scrim (heaviest on the left, where the text sits) keeps the white overlaid
+   text legible over any photo. No <img> tag is used, so this is a decorative
+   background — the text carries the meaning.
+
+   GOTCHA — the `url()` inside `--hero-img` is resolved by var() substitution
+   HERE, in this stylesheet's context, NOT the HTML document's. So the inline
+   value must be written relative to THIS file (/assets/css/), i.e.
+   `--hero-img:url('../img/og-home.webp')` — never `./assets/img/...` (that
+   resolves to /assets/css/assets/img/... and 404s). This path is
+   depth-independent and works under both a custom domain root and the GitHub
+   Pages project-subpath fallback. */
+.hero-bg {
+  --hero-img: none;
+  background:
+    linear-gradient(90deg, rgba(6,32,42,0.90) 0%, rgba(6,32,42,0.80) 30%, rgba(6,32,42,0.48) 50%, rgba(6,32,42,0.08) 72%, rgba(6,32,42,0) 100%),
+    var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  min-height: clamp(23rem, 18rem + 20vw, 32rem);
+}
+.hero-bg::after { content: none; } /* no accent glow over a photo hero */
+/* Text block sits left, over the darkest part of the scrim, capped for
+   readability while the vehicle photo shows through on the right. */
+.hero-bg-inner { max-width: 38rem; }
+.hero-bg h1 {
+  color: #fff;
+  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3rem);
+  max-width: 18ch;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+}
+.hero-bg .lead { color: #eef5f7; max-width: 40ch; text-shadow: 0 1px 8px rgba(0,0,0,0.30); }
+.hero-bg .hero-badges { color: #fff; }
+.hero-bg .hero-badges li::before { background-color: #fff; }
+
 /* Feature image framing (Phase 4a): rounded, elevated, subtly ringed. This is
    what turns a flat full-width rectangle into a deliberate design element.
    Applied via the `.hero-media` band class the assembly step wraps every hero

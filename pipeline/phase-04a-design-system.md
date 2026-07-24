@@ -44,6 +44,25 @@ Runs once per client, immediately after Phase 4, before Phase 5.
      soft off-screen accent glow behind the content; **(e)** a display-size
      type jump (larger, tighter-tracked `h1`/`h2`) while staying on the system
      font stack. None of this requires leaving plain static HTML.
+   - **Optional full-bleed photo hero (recommended for the homepage of a
+     home-service business).** A hero that IS a photo — the client's branded
+     service vehicle with the team in front (generated in Phase 7) — reads as
+     far more established and local than a gradient. Implement it as a CSS
+     background on the hero `<section>` (a `.hero-bg` variant), NOT an `<img>`:
+     the photo is decorative and the overlaid H1/subhead/CTAs carry the meaning.
+     Requirements: (1) a **left-weighted dark scrim gradient** layered over the
+     photo so the white overlaid text stays WCAG-legible while the vehicle/logo
+     still show through on the other side; (2) the text block constrained and
+     left-aligned over the darkest part; (3) set the image per-page via a
+     `--hero-img` custom property so this shared stylesheet stays client-neutral;
+     (4) a `<link rel="preload" as="image">` for the hero photo (it's the LCP).
+     **`url()` PATH GOTCHA:** a `url()` inside a custom property is resolved by
+     `var()` substitution in the *stylesheet's* context, not the document's — so
+     the value must be written relative to `/assets/css/` (e.g.
+     `--hero-img:url('../img/hero.webp')`), never a document-relative
+     `./assets/img/...` (which resolves to `/assets/css/assets/img/...` and
+     404s). This path is depth-independent and works under both a custom domain
+     root and the GitHub Pages project-subpath fallback.
    - **Container width**: ~1200–1320px for the structural container is a
      reasonable modern default (vs. older ~1140px conventions), paired with
      a `clamp()`-based side padding so it breathes on ultra-wide screens

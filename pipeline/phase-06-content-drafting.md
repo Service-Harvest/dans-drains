@@ -142,10 +142,17 @@ The reviews section is **always third, immediately after the differentiators**,
 whether or not real review data is connected yet — do not bury it lower down or
 leave its placement to chance. After those three, the remaining bands follow:
 homepage-linked priority sections (full-width, not cards — see below),
-local-service section, process section, trust/credentials section, GBP embed
-placeholder, 6–8 FAQs (same `<section id="faq">` wrapper convention as above),
-final CTA. (Section background colors must still alternate per Phase 4a; when
-you fix the order, re-check the whole band sequence.)
+local-service section, process section, trust/credentials section, the **Google
+Business Profile map embed** placeholder, 6–8 FAQs (same `<section id="faq">`
+wrapper convention as above), final CTA. (Section background colors must still
+alternate per Phase 4a; when you fix the order, re-check the whole band sequence.)
+
+**The reviews widget and the GBP map embed are TWO separate sections in two
+separate places — do not merge them into one "Reviews & Google Business Profile"
+block.** The Google *reviews* widget is the 3rd band (social proof, high up). The
+Google Business *Profile map* embed is a distinct band that belongs near the
+bottom, **immediately before the FAQ section** (it's a "find/visit us" element,
+not social proof). Give each its own `<h2>` band and its own placeholder.
 
 **Homepage H1 — head term wrapped in real differentiators, never the bare
 string.** The homepage H1 must keep the primary category and the geo-target

@@ -26,6 +26,7 @@ module.exports = function (exp) {
     const B = G.BIZ;
     return {
       slug: "",
+      preload: "assets/img/og-home.webp",
       title: "Plumber in Westchester County, NY | Dan's Drains",
       meta: "Licensed, insured plumber based in Armonk serving Westchester County, NY. Same-day service, upfront pricing, and 15+ years of local experience. Call today.",
       ogImage: "og-home.webp",
@@ -66,9 +67,7 @@ module.exports = function (exp) {
       const rev = imgSide === "left" ? " reverse" : "";
       return `<section class="section${bg ? " " + bg : ""} content"><div class="container"><div class="media-row${rev}">${inner}</div></div></section>`;
     };
-    return `<section class="hero hero-media"><div class="container">
-<div class="media-row">
-<div class="media-text">
+    return `<section class="hero hero-bg" style="--hero-img:url('../img/og-home.webp')"><div class="container"><div class="hero-bg-inner">
 <h1>Your Licensed, Insured Plumber in Westchester County, NY</h1>
 <p class="lead">Dan's Drains is a local, family-run plumbing company based in Armonk. For over 15 years we have helped Westchester County homeowners with everyday repairs, emergencies, water heaters, drains, and more — with honest advice and upfront pricing.</p>
 <div class="btn-row">
@@ -76,12 +75,7 @@ module.exports = function (exp) {
 <a class="btn btn-secondary" href="tel:${B.phoneTel}">Call ${B.nameEnt}</a>
 </div>
 ${badges}
-</div>
-<div class="media-media">
-<img src="${root}assets/img/og-home.webp" alt="Dan's Drains plumber in a work uniform standing by a service van in a Westchester County neighborhood" width="1200" height="630" fetchpriority="high">
-</div>
-</div>
-</div></section>
+</div></div></section>
 
 <section class="section section-alt content"><div class="container">
 <h2>Why Homeowners Call Dan's Drains</h2>
@@ -95,10 +89,9 @@ ${card("15+ Years Experience", "From quick fixes to bigger repairs, we have seen
 </div></section>
 
 <section class="section content"><div class="container">
-<h2>Reviews &amp; Google Business Profile</h2>
-<p>We are proud of the reputation we have built in Westchester County by doing honest work and treating people right. Verified reviews and our Google Business Profile will appear here.</p>
+<h2>What Westchester Homeowners Say</h2>
+<p>We are proud of the reputation we have built in Westchester County by doing honest work and treating people right. Verified customer reviews will appear here.</p>
 <div class="embed-holder">Google reviews widget placeholder — to be connected.</div>
-<div class="embed-holder" style="margin-top:1rem">Google Business Profile map embed placeholder — to be connected.</div>
 </div></section>
 
 ${prioSection("section-alt", "right", "Fast Emergency Plumbing Help", "emergency-plumbing-repair-westchester-ny", "og-emergency-plumbing-repair.webp", "Dan's Drains plumber shutting off a home water supply valve during an emergency call", `<p>When a pipe bursts or water is spreading across the floor, you do not have time to shop around. We keep room in the day for urgent calls and will stay on the phone to help you shut off the water before we arrive.</p><p>Once we are there, we find the source, stop the water, and explain your options before starting. You get a clear price up front, not a frightening number after the fact.</p>`, `For burst pipes and sudden leaks, count on [[LINK:emergency-plumbing-repair-westchester-ny|our round-the-clock emergency response]] to get things under control quickly.`)}
@@ -139,6 +132,12 @@ ${prioSection("", "left", "Full Drainage &amp; Sewer Services", "drainage-servic
 <li>Same-day service available</li>
 <li>Upfront, honest pricing</li>
 </ul>
+</div></section>
+
+<section class="section content"><div class="container">
+<h2>Find Us in Westchester County</h2>
+<p>Dan's Drains is based in Armonk and serves homeowners and small businesses across Westchester County. Our Google Business Profile and service-area map will appear here.</p>
+<div class="embed-holder">Google Business Profile map embed placeholder — to be connected.</div>
 </div></section>
 
 <section class="section section-alt" id="faq"><div class="container">
@@ -383,6 +382,11 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
   function page(o) {
     const isCategory = !!o.isCategory;
     const metaText = o.meta || deriveMeta(o.lead);
+    // Parent category is the single source of truth in CATALOG (content-data.js),
+    // not the per-page object — so re-nesting a service only needs a CATALOG edit
+    // and the breadcrumb + hub grouping follow automatically.
+    const catInfo = CATALOG.find((s) => s.slug === o.slug);
+    const parentCat = isCategory ? o.cat : catInfo ? catInfo.cat : o.cat || "plumber";
     return {
       slug: o.slug,
       kind: isCategory ? "category" : "service",
@@ -407,7 +411,7 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
       localDetails: o.localDetails || "",
       angle: o.angle || "",
       // Breadcrumb label is the exact canonical name, plain (no wrapping).
-      trail: trailFor(o.slug, CANONICAL[o.slug] || o.h1, o.cat, isCategory),
+      trail: trailFor(o.slug, CANONICAL[o.slug] || o.h1, parentCat, isCategory),
     };
   }
 

@@ -160,8 +160,9 @@ function websiteNode() {
 }
 
 // ---- head + shell ----
-function head({ slug, title, meta, ogImage, schema }) {
+function head({ slug, title, meta, ogImage, schema, preload }) {
   const root = slug === "" ? "./" : "../";
+  const preloadTag = preload ? `\n<link rel="preload" as="image" href="${root}${preload}">` : "";
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,7 +176,7 @@ function head({ slug, title, meta, ogImage, schema }) {
 <link rel="icon" type="image/png" sizes="16x16" href="${root}assets/img/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="${root}assets/img/apple-touch-icon.png">
 <link rel="manifest" href="${root}site.webmanifest">
-<meta name="theme-color" content="#0a5568">
+<meta name="theme-color" content="#0a5568">${preloadTag}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dan&rsquo;s Drains">
 <meta property="og:locale" content="en_US">

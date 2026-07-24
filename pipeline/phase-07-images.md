@@ -17,6 +17,21 @@ When generating or placing that specific slot, size/crop it to 1200×630 in
 addition to its normal in-page dimensions, so Phase 4's OG tags have a real
 asset to point to.
 
+## Homepage hero photo — the branded service vehicle + team
+Unless the client supplied a real vehicle/team photo, generate the homepage
+hero image as the client's **branded service vehicle with the team standing in
+front of it** — a van/truck showing the business name and a simple logo mark on
+the side, with a small crew in uniform. This is the homepage's LCP/hero image
+and doubles as its OG image (1200×630). It fills the full-bleed `.hero-bg`
+background from Phase 4a (a CSS background, not an `<img>`), so size/crop it to
+work behind left-aligned overlaid text.
+- **Honesty caveat (state it in the build report):** an AI-generated vehicle,
+  logo, and "team" are illustrative — the branding and people are invented, not
+  a photo of the real business. That's acceptable as a decorative hero (same
+  footing as stock photography), but flag it so the client replaces it with a
+  real branded-vehicle + team photo when they have one. Never label it "our
+  team" or "our van" in alt/caption text.
+
 ## Honesty rule for generated images
 AI-generated images are illustrative/decorative, similar in spirit to stock
 photography. Never present a generated image as an actual customer result,

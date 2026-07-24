@@ -15,33 +15,22 @@
 | / | /drainage-service-westchester-ny | drainage and sewer solutions we offer | in-body contextual link |
 | / | /emergency-plumbing-repair-westchester-ny | emergency plumbing help page | in-body contextual link |
 | /services | /emergency-plumbing-repair-westchester-ny | Emergency Plumbing Repair | in-body contextual link |
-| /services | /leak-detection-westchester-ny | Leak Detection | in-body contextual link |
 | /services | /pipe-repair-westchester-ny | Pipe Repair | in-body contextual link |
 | /services | /pipe-replacement-westchester-ny | Pipe Replacement | in-body contextual link |
-| /services | /burst-pipe-repair-westchester-ny | Burst Pipe Repair | in-body contextual link |
 | /services | /frozen-pipe-repair-westchester-ny | Frozen Pipe Repair | in-body contextual link |
 | /services | /repiping-westchester-ny | Repiping | in-body contextual link |
 | /services | /water-line-replacement-westchester-ny | Water Line Replacement | in-body contextual link |
 | /services | /water-main-repair-westchester-ny | Water Main Repair | in-body contextual link |
-| /services | /slab-leak-repair-westchester-ny | Slab Leak Repair | in-body contextual link |
-| /services | /sewer-line-repair-westchester-ny | Sewer Line Repair | in-body contextual link |
-| /services | /sump-pump-installation-westchester-ny | Sump Pump Installation | in-body contextual link |
 | /services | /low-water-pressure-repair-westchester-ny | Low Water Pressure Repair | in-body contextual link |
 | /services | /water-heater-installation-westchester-ny | Water Heater Installation | in-body contextual link |
 | /services | /tankless-water-heater-installation-westchester-ny | Tankless Water Heater Installation | in-body contextual link |
-| /services | /gas-water-heater-installation-westchester-ny | Gas Water Heater Installation | in-body contextual link |
 | /services | /hot-water-system-repair-westchester-ny | Hot Water System Repair | in-body contextual link |
-| /services | /boiler-installation-westchester-ny | Boiler Installation | in-body contextual link |
 | /services | /water-softener-installation-westchester-ny | Water Softener Installation | in-body contextual link |
 | /services | /water-filtration-system-installation-westchester-ny | Water Filtration System Installation | in-body contextual link |
 | /services | /toilet-repair-westchester-ny | Toilet Repair | in-body contextual link |
-| /services | /toilet-installation-westchester-ny | Toilet Installation | in-body contextual link |
 | /services | /faucet-installation-westchester-ny | Faucet Installation | in-body contextual link |
 | /services | /outdoor-faucet-repair-westchester-ny | Outdoor Faucet Repair | in-body contextual link |
 | /services | /garbage-disposal-repair-westchester-ny | Garbage Disposal Repair | in-body contextual link |
-| /services | /shower-installation-westchester-ny | Shower Installation | in-body contextual link |
-| /services | /shower-valve-replacement-westchester-ny | Shower Valve Replacement | in-body contextual link |
-| /services | /bathtub-installation-westchester-ny | Bathtub Installation | in-body contextual link |
 | /services | /sink-installation-westchester-ny | Sink Installation | in-body contextual link |
 | /services | /fixture-replacement-westchester-ny | Fixture Replacement | in-body contextual link |
 | /services | /appliance-hook-up-westchester-ny | Appliance Hook-up | in-body contextual link |
@@ -53,6 +42,7 @@
 | /services | /urinal-installation-westchester-ny | Urinal Installation | in-body contextual link |
 | /services | /commercial-plumbing-services-westchester-ny | Commercial Plumbing Services | in-body contextual link |
 | /services | /drainage-service-westchester-ny | Drainage Service | in-body contextual link |
+| /services | /sewer-line-repair-westchester-ny | Sewer Line Repair | in-body contextual link |
 | /services | /drain-cleaning-westchester-ny | Drain Cleaning | in-body contextual link |
 | /services | /hydro-jetting-westchester-ny | Hydro Jetting | in-body contextual link |
 | /services | /drain-snaking-westchester-ny | Drain Snaking | in-body contextual link |
@@ -61,10 +51,20 @@
 | /services | /septic-system-service-westchester-ny | Septic System Service | in-body contextual link |
 | /services | /septic-tank-service-westchester-ny | Septic Tank Service | in-body contextual link |
 | /services | /gasfitter-westchester-ny | Gasfitter | in-body contextual link |
+| /services | /gas-water-heater-installation-westchester-ny | Gas Water Heater Installation | in-body contextual link |
+| /services | /boiler-installation-westchester-ny | Boiler Installation | in-body contextual link |
 | /services | /gas-line-repair-westchester-ny | Gas Line Repair | in-body contextual link |
 | /services | /bathroom-remodeler-westchester-ny | Bathroom Remodeler | in-body contextual link |
+| /services | /toilet-installation-westchester-ny | Toilet Installation | in-body contextual link |
+| /services | /shower-installation-westchester-ny | Shower Installation | in-body contextual link |
+| /services | /shower-valve-replacement-westchester-ny | Shower Valve Replacement | in-body contextual link |
+| /services | /bathtub-installation-westchester-ny | Bathtub Installation | in-body contextual link |
 | /services | /bathroom-plumbing-remodeling-westchester-ny | Bathroom Plumbing Remodeling | in-body contextual link |
 | /services | /water-damage-restoration-westchester-ny | Water Damage Restoration Service | in-body contextual link |
+| /services | /leak-detection-westchester-ny | Leak Detection | in-body contextual link |
+| /services | /burst-pipe-repair-westchester-ny | Burst Pipe Repair | in-body contextual link |
+| /services | /slab-leak-repair-westchester-ny | Slab Leak Repair | in-body contextual link |
+| /services | /sump-pump-installation-westchester-ny | Sump Pump Installation | in-body contextual link |
 | /services | /water-leak-sensor-installation-westchester-ny | Water Leak Sensor Installation | in-body contextual link |
 | /about | /services | see the full list of plumbing services we offer | in-body contextual link |
 | /contact | /services | browse the plumbing services we provide | in-body contextual link |

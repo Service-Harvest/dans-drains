@@ -47,6 +47,26 @@
 - **Nav bar (exactly):** Home · Services · About · Contact. No dropdowns, no service links in nav. One header CTA button: **Call Dan's Drains Today** → tel:+18555975391.
 - **Footer:** main nav; the 5 priority pages; all 5 secondary category pages; NAP (Armonk address, phone, email); service-area list; social (Facebook). Footer links use plain functional labels — they are navigation, NOT anchor-text strategy (that lives in body copy per the anchor ledger).
 
+## Category → service nesting (AUTHORITATIVE — revised in a Phase 14 edit)
+
+> Each service is nested under the category it genuinely best fits. Where a
+> service was genuinely ambiguous, it was placed under the category with fewer
+> services, to spread the structure out rather than pile everything into the
+> primary "Plumber" bucket. This revised distribution (6 / 1 / 3 / 5 / 5 / 27)
+> replaces the original lopsided one (5 / 1 / 1 / 1 / 1 / 38). The single source
+> of truth for nesting is the `cat` field in `CATALOG` (scripts/content-data.js);
+> breadcrumbs and the Services hub grouping derive from it. See build-report.md
+> "Category nesting analysis" for the per-move rationale.
+
+- **Drainage Service** (6): Drain Cleaning, Hydro Jetting, Drain Snaking, Sewer Camera Inspection, Grease Trap Cleaning, **Sewer Line Repair** (moved in — a sewer line is unambiguously drainage/sewer)
+- **Septic System Service** (1): Septic Tank Service *(legitimately the only septic-specific service)*
+- **Gasfitter** (3): Gas Line Repair, **Gas Water Heater Installation** (gas appliance connection), **Boiler Installation** (typically gas-fired; ambiguous → smaller category)
+- **Bathroom Remodeler** (5): Bathroom Plumbing Remodeling, **Toilet Installation**, **Shower Installation**, **Shower Valve Replacement**, **Bathtub Installation** (the bathroom *installation* work)
+- **Water Damage Restoration Service** (5): Water Leak Sensor Installation, **Leak Detection**, **Sump Pump Installation**, **Burst Pipe Repair**, **Slab Leak Repair** (leak/flood-damage work)
+- **Plumber (primary — homepage, no dedicated page)** (27): Emergency Plumbing Repair, Water Heater Installation, Tankless Water Heater Installation, Hot Water System Repair, Toilet Repair, Pipe Repair, Pipe Replacement, Frozen Pipe Repair, Repiping, Water Line Replacement, Water Main Repair, Faucet Installation, Outdoor Faucet Repair, Garbage Disposal Repair, Sink Installation, Urinal Installation, Fixture Replacement, Water Softener Installation, Water Filtration System Installation, Low Water Pressure Repair, Plumbing Inspection, Appliance Hook-up, Laundry Room Plumbing, Kitchen Plumbing Remodeling, Rainwater Tank Installation, Plumbing Maintenance, Commercial Plumbing Services
+
+*(The per-category tables in "Page inventory" below reflect the original grouping and are superseded by this section for nesting; URLs/titles/metadata there remain accurate.)*
+
 ## Canonical category/service names — SOURCE OF TRUTH (approved at the Phase 3 checkpoint)
 
 > These are the exact category and service names the client approved at the
