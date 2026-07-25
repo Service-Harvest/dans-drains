@@ -29,6 +29,11 @@ ledger and the sitemap by the time this runs.
 - Missing explicit width/height on any image
 - Missing JSON-LD schema on any page (hard fail, not a warning), and every
   schema block present validates as well-formed JSON-LD
+- JSON-LD string hygiene: a schema block that contains a raw HTML entity
+  (`&amp;`, `&#39;`, `&mdash;`, …) or an unexpanded authoring token
+  (`[[LINK:…]]`/`[[OUT:…]]`). JSON-LD inside `<script>` is raw text, so these
+  are never decoded/expanded and get indexed literally — schema string values
+  must be plain text (see Phase 9)
 - Every URL in `sitemap.xml` corresponds to a real file in `/site/`, and
   that file's canonical tag is **byte-identical** to the sitemap `<loc>`
   entry — not just normalized-equal (a `/page` canonical against a

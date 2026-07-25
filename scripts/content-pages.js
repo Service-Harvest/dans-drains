@@ -368,14 +368,33 @@ ${G.ctaBand("We are ready when you are. Call Dan's Drains for fast, friendly plu
   // Page objects are pushed by the appended batches below (see __PAGES__ marker).
 
   // Derive a unique meta description from the authored lead when one isn't
-  // given explicitly. Strips tags/entities, trims to ~157 chars on a word
-  // boundary so it lands near the 150-160 SEO guidance.
+  // given explicitly. Strips tags/entities/link-tokens, then truncates
+  // GRACEFULLY: prefer ending on a complete sentence; else cut at a clause
+  // boundary (comma/semicolon/colon/em-dash) and append an ellipsis. Never end
+  // mid-phrase (e.g. "...to get your."), which reads as broken copy.
   function deriveMeta(lead) {
-    let t = String(lead).replace(/<[^>]+>/g, "").replace(/&rsquo;/g, "'").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+    const t = String(lead)
+      .replace(/\[\[LINK:[^|\]]+\|([^\]]+)\]\]/g, "$1")
+      .replace(/\[\[OUT:[^|\]]+\|([^\]]+)\]\]/g, "$1")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&rsquo;|&#8217;|&#39;/g, "'")
+      .replace(/&mdash;|&#8212;/g, "—")
+      .replace(/&amp;/g, "&")
+      .replace(/\s+/g, " ")
+      .trim();
     if (t.length <= 160) return t;
-    let cut = t.slice(0, 158);
-    cut = cut.slice(0, cut.lastIndexOf(" "));
-    return cut.replace(/[\s,;:—-]+$/, "") + ".";
+    const win = t.slice(0, 160);
+    // Prefer the last complete sentence within the window, if it's substantial.
+    const sentences = win.match(/[^.!?]+[.!?](?=\s|$)/g);
+    if (sentences) {
+      const joined = sentences.join("").trim();
+      if (joined.length >= 80) return joined;
+    }
+    // Else cut at the last clause boundary; fall back to a word boundary.
+    let cut = win;
+    const clause = Math.max(win.lastIndexOf(", "), win.lastIndexOf("; "), win.lastIndexOf(" — "), win.lastIndexOf(": "));
+    cut = clause >= 80 ? win.slice(0, clause) : win.slice(0, win.lastIndexOf(" "));
+    return cut.replace(/[\s,;:—–-]+$/, "") + "…";
   }
 
   // helper to assemble a standard service/category page object

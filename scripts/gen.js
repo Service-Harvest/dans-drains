@@ -75,11 +75,33 @@ function expandLinks(html, sourceUrl, root) {
 }
 
 // ---- schema builders ----
+// Sanitize an authored string for use as a JSON-LD value. JSON-LD lives inside
+// <script type="application/ld+json">, whose contents are RAW TEXT — HTML
+// entities are NOT decoded there and authoring tokens are not expanded, so
+// either would be indexed literally (e.g. a name showing "&amp;", or an answer
+// containing "[[LINK:...]]"). Every string that goes into a schema field must
+// pass through here first: expand link tokens to their anchor text, strip any
+// HTML tags, decode the entities the templates emit, and collapse whitespace.
+function plainText(s) {
+  return String(s)
+    .replace(/\[\[LINK:[^|\]]+\|([^\]]+)\]\]/g, "$1")
+    .replace(/\[\[OUT:[^|\]]+\|([^\]]+)\]\]/g, "$1")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&rsquo;|&lsquo;|&#8217;|&#8216;|&#39;/g, "'")
+    .replace(/&mdash;|&#8212;/g, "—")
+    .replace(/&ndash;|&#8211;/g, "–")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function bizNode() {
   return {
     "@type": ["PlumbingService", "LocalBusiness"],
     "@id": `${BASE}/#business`,
-    name: BIZ.name,
+    name: plainText(BIZ.name),
     telephone: BIZ.phone,
     email: BIZ.email,
     url: `${BASE}/`,
@@ -104,7 +126,7 @@ function webPageNode(url, name, type = "WebPage") {
     "@type": type,
     "@id": `${BASE}/${clean}#webpage`,
     url: `${BASE}/${clean}`,
-    name,
+    name: plainText(name),
     isPartOf: { "@id": `${BASE}/#website` },
     about: bizRef(),
   };
@@ -117,7 +139,7 @@ function breadcrumbNode(url, trail) {
     itemListElement: trail.map((t, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      name: t.name,
+      name: plainText(t.name),
       item: `${BASE}${t.url === "/" ? "/" : t.url}`,
     })),
   };
@@ -129,8 +151,8 @@ function faqNode(url, faqs) {
     "@id": `${BASE}/${url === "/" ? "" : url.replace(/^\//, "")}#faq`,
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a.replace(/<[^>]+>/g, "") },
+      name: plainText(f.q),
+      acceptedAnswer: { "@type": "Answer", text: plainText(f.a) },
     })),
   };
 }
@@ -140,10 +162,10 @@ function serviceNode(url, name, serviceType, desc) {
   return {
     "@type": "Service",
     "@id": `${BASE}/${clean}#service`,
-    name,
-    serviceType: serviceType || name,
+    name: plainText(name),
+    serviceType: plainText(serviceType || name),
     url: `${BASE}/${clean}`,
-    description: desc,
+    description: plainText(desc),
     provider: bizRef(),
     areaServed: BIZ.areas.map((a) => ({ "@type": "City", name: a })),
   };
@@ -154,7 +176,7 @@ function websiteNode() {
     "@type": "WebSite",
     "@id": `${BASE}/#website`,
     url: `${BASE}/`,
-    name: BIZ.name,
+    name: plainText(BIZ.name),
     publisher: bizRef(),
   };
 }

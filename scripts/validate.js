@@ -445,6 +445,17 @@ for (const file of files) {
       } catch (e) {
         fail(`Invalid JSON-LD schema on ${url}: ${e.message}`);
       }
+      // JSON-LD lives in a <script> (raw text): HTML entities are NOT decoded
+      // and authoring tokens are not expanded, so either gets indexed literally.
+      // Schema string values must be plain text — decode entities and expand
+      // link tokens before emitting (see phase-09). Hard-fail if any leak in.
+      const entity = block[1].match(/&[a-zA-Z]{2,8};|&#\d{2,6};/);
+      if (entity) {
+        fail(`JSON-LD on ${url} contains a raw HTML entity "${entity[0]}" — schema string values must be decoded to plain text (entities inside <script type="application/ld+json"> are not parsed and get indexed literally).`);
+      }
+      if (/\[\[(?:LINK|OUT):/.test(block[1])) {
+        fail(`JSON-LD on ${url} contains an unexpanded [[LINK]]/[[OUT]] authoring token — expand it to its anchor text before emitting schema.`);
+      }
     }
   }
   schemaTypesByUrl.set(url, types);

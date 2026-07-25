@@ -93,7 +93,14 @@ then all remaining category/service pages, then About/Contact.
    (Phase 9) and vice versa.
 9. Final CTA.
 10. SEO elements: title tag, meta description, H1, H2s, internal links used,
-    outbound link used.
+    outbound link used. **The meta description must read as a complete,
+    self-contained thought** — never a mid-sentence truncation like "…provides
+    snaking and rooter service to get your." Prefer a purpose-written meta
+    (~150-160 chars) for each page. If a meta is instead derived by truncating a
+    longer lead, cut it at a **sentence or clause boundary** (and add an ellipsis
+    when clause-cut), never mid-phrase. The same text feeds `og:description`,
+    `twitter:description`, and the Service-schema `description`, so a broken
+    truncation shows up in three places.
 
 ### The approved canonical name must appear verbatim (H1, title, breadcrumb)
 
